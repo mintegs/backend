@@ -1,3 +1,4 @@
+import { RegistryDates } from 'common/embedded/registry-dates.embedded';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -16,4 +17,11 @@ export class User {
 
   @Column({ select: false })
   password: string;
+
+  @Column(() => RegistryDates, { prefix: false })
+  registryDates: RegistryDates;
+
+  get isDeleted() {
+    return !!this.registryDates.deleteAt;
+  }
 }
