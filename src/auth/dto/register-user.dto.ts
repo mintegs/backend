@@ -1,4 +1,5 @@
 import { IsEmail, Length, Matches } from 'class-validator';
+import { IsPassword } from 'common/decorators/validators/is-password.decorator';
 
 export class RegisterUserDto {
   @IsEmail()
@@ -10,9 +11,6 @@ export class RegisterUserDto {
   })
   readonly username: string;
 
-  @Length(8, 20)
-  @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]{8,20}$/, {
-    message: 'invalid password'
-  })
+  @IsPassword()
   readonly password: string;
 }
