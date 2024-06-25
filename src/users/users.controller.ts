@@ -9,6 +9,7 @@ import {
   Query
 } from '@nestjs/common';
 import { IdDto } from 'common/dto/id.dto';
+import { RemoveDto } from 'common/dto/remove.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -38,7 +39,7 @@ export class UsersController {
   }
 
   @Delete(':id')
-  remove(@Param('id') { id }: IdDto, @Query() soft: boolean) {
+  remove(@Param('id') { id }: IdDto, @Query() { soft }: RemoveDto) {
     return this.usersService.remove(id, soft);
   }
 }
