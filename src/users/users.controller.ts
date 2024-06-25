@@ -8,6 +8,7 @@ import {
   Post,
   Query
 } from '@nestjs/common';
+import { IdDto } from 'common/dto/id.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -27,17 +28,17 @@ export class UsersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') { id }: IdDto) {
     return this.usersService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  update(@Param('id') { id }: IdDto, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string, @Query() soft: boolean) {
+  remove(@Param('id') { id }: IdDto, @Query() soft: boolean) {
     return this.usersService.remove(id, soft);
   }
 }
