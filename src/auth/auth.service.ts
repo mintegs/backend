@@ -3,8 +3,8 @@ import {
   NotFoundException,
   UnauthorizedException
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserStatus } from 'common/enums/user-status.enum';
 import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -14,7 +14,8 @@ import { HashingService } from './hashing/hashing.service';
 export class AuthService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-    private readonly hashingService: HashingService
+    private readonly hashingService: HashingService,
+    private readonly jwtService: JwtService
   ) {}
 
   async register(registerUserDto: RegisterUserDto) {
@@ -42,10 +43,10 @@ export class AuthService {
     if (!user) throw new NotFoundException('User not found');
 
     // Check user status
-    if (user.status !== UserStatus.ACTIVATE)
-      throw new UnauthorizedException(
-        `Your account is ${user.status.toLowerCase()} see support for reviewing your account`
-      );
+    // if (user.status !== UserStatus.ACTIVATE)
+    //   throw new UnauthorizedException(
+    //     `Your account is ${user.status.toLowerCase()} see support for reviewing your account`
+    //   );
 
     // Check valid password
     const isMatch = await this.hashingService.compare(password, user.password);
@@ -56,5 +57,13 @@ export class AuthService {
     // Return user without password
     delete user.password;
     return user;
+  }
+
+  login(user: User) {
+    const payload = { id: user.id };
+    return {
+      ...user,
+      token: this.jwtService.sign(payload)
+    };
   }
 }

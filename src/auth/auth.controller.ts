@@ -6,6 +6,7 @@ import {
   Post,
   UseGuards
 } from '@nestjs/common';
+import { User as UserEntity } from 'users/entities/user.entity';
 import { AuthService } from './auth.service';
 import { User } from './decorators/user.decorator';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -23,7 +24,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  login(@User() user: any) {
-    return user;
+  login(@User() user: UserEntity) {
+    return this.authService.login(user);
   }
 }
