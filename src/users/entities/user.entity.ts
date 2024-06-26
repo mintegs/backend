@@ -1,4 +1,5 @@
 import { RegistryDates } from 'common/embedded/registry-dates.embedded';
+import { UserRole } from 'common/enums/user-role.enum';
 import { UserStatus } from 'common/enums/user-status.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -21,6 +22,9 @@ export class User {
 
   @Column({ type: 'enum', enum: UserStatus, default: UserStatus.DEACTIVATE })
   status: UserStatus;
+
+  @Column({ type: 'enum', enum: UserRole, default: UserRole.USER })
+  role: UserRole;
 
   @Column(() => RegistryDates, { prefix: false })
   registryDates: RegistryDates;
