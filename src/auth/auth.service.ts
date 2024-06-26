@@ -1,13 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { UserStatus } from 'common/enums/user-status.enum';
 import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 import { RegisterUserDto } from './dto/register-user.dto';
+import { HashingService } from './hashing/hashing.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    private readonly hashingService: HashingService
   ) {}
 
   async register(registerUserDto: RegisterUserDto) {
@@ -22,5 +29,32 @@ export class AuthService {
     } catch (error) {
       throw error;
     }
+  }
+
+  async validateLocal(email: string, password: string) {
+    // Find user with email or username
+    const user = await this.userRepository.findOne({
+      where: [{ email }, { username: email }],
+      select: ['id', 'role', 'status', 'password']
+    });
+
+    // If doesn't exists, handle it
+    if (!user) throw new NotFoundException('User not found');
+
+    // Check user status
+    if (user.status !== UserStatus.ACTIVATE)
+      throw new UnauthorizedException(
+        `Your account is ${user.status.toLowerCase()} see support for reviewing your account`
+      );
+
+    // Check valid password
+    const isMatch = await this.hashingService.compare(password, user.password);
+
+    // If invalid password, handle it
+    if (!isMatch) throw new UnauthorizedException('invalid password');
+
+    // Return user without password
+    delete user.password;
+    return user;
   }
 }
