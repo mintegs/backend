@@ -7,6 +7,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
+import { JwtPayload } from './../common/interfaces/jwt-payload.interface';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { HashingService } from './hashing/hashing.service';
 
@@ -65,5 +66,18 @@ export class AuthService {
       ...user,
       token: this.jwtService.sign(payload)
     };
+  }
+
+  async validateJwt({ id }: JwtPayload) {
+    // Find user with id
+    const user = await this.userRepository.findOneBy({ id });
+
+    // If doesn't exists, handle it
+    if (!user) throw new UnauthorizedException();
+
+    // return Jwt payload
+    const res: JwtPayload = { id };
+
+    return res;
   }
 }
