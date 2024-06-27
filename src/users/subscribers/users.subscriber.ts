@@ -21,17 +21,17 @@ export class UsersSubscriber implements EntitySubscriberInterface<User> {
     return User;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   async beforeInsert(event: InsertEvent<User>) {
     const { entity: user } = event;
     user.password = await this.hashingService.hash(user.password);
   }
 
   async beforeUpdate(event: UpdateEvent<User>) {
-    const { entity, databaseEntity: databaseUser } = event;
+    const { entity } = event;
     const user = entity as User;
 
-    if (databaseUser.password !== user.password) {
-      user.password = await this.hashingService.hash(user.password);
-    }
+    user.password = await this.hashingService.hash(user.password);
   }
 }

@@ -8,6 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 import { JwtPayload } from './../common/interfaces/jwt-payload.interface';
+import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { HashingService } from './hashing/hashing.service';
 
@@ -48,6 +49,29 @@ export class AuthService {
     // Remove id form user object and return it
     delete user.id;
     return user;
+  }
+
+  async changePassword(
+    id: string,
+    { currentPassword, newPassword }: ChangePasswordDto
+  ) {
+    const user = await this.userRepository.findOne({
+      where: { id },
+      select: ['password']
+    });
+
+    // Check valid password
+    const isMatch = await this.hashingService.compare(
+      currentPassword,
+      user.password
+    );
+
+    // If invalid password, handle it
+    if (!isMatch) throw new UnauthorizedException('invalid password');
+
+    // If the new password is different from the current password
+    if (currentPassword !== newPassword)
+      await this.userRepository.update({ id }, { password: newPassword });
   }
 
   async validateLocal(email: string, password: string) {
