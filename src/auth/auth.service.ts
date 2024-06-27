@@ -33,6 +33,23 @@ export class AuthService {
     }
   }
 
+  login(user: User) {
+    const payload = { id: user.id };
+    return {
+      ...user,
+      token: this.jwtService.sign(payload)
+    };
+  }
+
+  async getProfile(id: string) {
+    // Find user
+    const user = await this.userRepository.findOneBy({ id });
+
+    // Remove id form user object and return it
+    delete user.id;
+    return user;
+  }
+
   async validateLocal(email: string, password: string) {
     // Find user with email or username
     const user = await this.userRepository.findOne({
@@ -58,14 +75,6 @@ export class AuthService {
     // Return user without password
     delete user.password;
     return user;
-  }
-
-  login(user: User) {
-    const payload = { id: user.id };
-    return {
-      ...user,
-      token: this.jwtService.sign(payload)
-    };
   }
 
   async validateJwt({ id }: JwtPayload) {
