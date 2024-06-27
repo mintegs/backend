@@ -9,11 +9,16 @@ import { BcryptService } from './hashing/bcrypt.service';
 import { HashingService } from './hashing/hashing.service';
 import { LoginValidationMiddleware } from './middlewares/login-validation.middleware';
 import { LocalStrategy } from './strategies/local.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
-    JwtModule.registerAsync(jwtConfig.asProvider())
+    JwtModule.registerAsync(jwtConfig.asProvider()),
+    ConfigModule.forFeature(jwtConfig)
   ],
   controllers: [AuthController],
   providers: [
@@ -22,7 +27,12 @@ import { LocalStrategy } from './strategies/local.strategy';
       provide: HashingService,
       useClass: BcryptService
     },
-    LocalStrategy
+    LocalStrategy,
+    JwtStrategy,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard
+    }
   ],
   exports: [HashingService]
 })
