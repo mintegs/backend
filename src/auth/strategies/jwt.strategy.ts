@@ -4,6 +4,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { AuthService } from 'auth/auth.service';
 import jwtConfig from 'auth/config/jwt.config';
 import { JwtPayload } from 'common/interfaces/jwt-payload.interface';
+import { Request } from 'express';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 @Injectable()
@@ -15,11 +16,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: jwtConfiguration.secret
+      secretOrKey: jwtConfiguration.secret,
+      passReqToCallback: true
     });
   }
 
-  validate(payload: JwtPayload) {
-    return this.authService.validateJwt(payload);
+  validate(req: Request, payload: JwtPayload) {
+    return this.authService.validateJwt(payload, req.headers.authorization);
   }
 }

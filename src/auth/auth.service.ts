@@ -36,6 +36,9 @@ export class AuthService {
 
   login(user: User) {
     const payload = { id: user.id };
+    // generate jwt token
+    // create new session
+    // return user data and jwt token
     return {
       ...user,
       token: this.jwtService.sign(payload)
@@ -101,12 +104,16 @@ export class AuthService {
     return user;
   }
 
-  async validateJwt({ id }: JwtPayload) {
+  async validateJwt({ id }: JwtPayload, jwtToken: string) {
     // Find user with id
     const user = await this.userRepository.findOneBy({ id });
 
     // If doesn't exists, handle it
     if (!user) throw new UnauthorizedException();
+
+    // Checking that the session has not expired
+
+    // If it had expired, handle it
 
     // return Jwt payload
     const res: JwtPayload = { id };
