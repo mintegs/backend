@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class ChangeTypeDeviceToSession1719671348989 implements MigrationInterface {
-    name = 'ChangeTypeDeviceToSession1719671348989'
+export class AddSessionEntity1719672378417 implements MigrationInterface {
+    name = 'AddSessionEntity1719672378417'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`

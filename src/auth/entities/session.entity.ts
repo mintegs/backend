@@ -1,5 +1,6 @@
 import { Device } from 'common/interfaces/device.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'users/entities/user.entity';
 
 @Entity()
 export class Session {
@@ -18,8 +19,8 @@ export class Session {
   @Column()
   expiryDate: Date;
 
-  // @ManyToOne(() => User, (user) => user.id, {
-  //   nullable: false
-  // })
-  // owner: User;
+  @ManyToOne(() => User, (user) => user.id, {
+    nullable: false
+  })
+  owner: User;
 }

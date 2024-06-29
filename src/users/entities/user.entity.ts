@@ -1,7 +1,8 @@
+import { Session } from 'auth/entities/session.entity';
 import { RegistryDates } from 'common/embedded/registry-dates.embedded';
 import { UserRole } from 'common/enums/user-role.enum';
 import { UserStatus } from 'common/enums/user-status.enum';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -28,6 +29,11 @@ export class User {
 
   @Column(() => RegistryDates, { prefix: false })
   registryDates: RegistryDates;
+
+  @OneToMany(() => Session, (session) => session.owner, {
+    cascade: ['soft-remove', 'recover']
+  })
+  sessions: Session[];
 
   get isDeleted() {
     return !!this.registryDates.deleteAt;
