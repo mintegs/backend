@@ -22,6 +22,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   validate(req: Request, payload: JwtPayload) {
-    return this.authService.validateJwt(payload, req.headers.authorization);
+    return this.authService.validateJwt(
+      payload,
+      req.headers?.authorization.replace('bearer ', '')
+    );
   }
 }

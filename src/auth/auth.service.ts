@@ -5,18 +5,22 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
+import { customUser } from 'common/interfaces/custom-request.interface';
+import { Device } from 'common/interfaces/device.interface';
 import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 import { JwtPayload } from './../common/interfaces/jwt-payload.interface';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { HashingService } from './hashing/hashing.service';
+import { SessionService } from './session/session.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly hashingService: HashingService,
+    private readonly sessionService: SessionService,
     private readonly jwtService: JwtService
   ) {}
 
@@ -34,10 +38,14 @@ export class AuthService {
     }
   }
 
-  login(user: User) {
+  async login(user: User, ip: string, device: Device) {
     const payload = { id: user.id };
     // generate jwt token
+    const token = this.jwtService.sign(payload);
+
     // create new session
+    await this.sessionService.create(user.id, token, ip, device);
+
     // return user data and jwt token
     return {
       ...user,
@@ -112,11 +120,13 @@ export class AuthService {
     if (!user) throw new UnauthorizedException();
 
     // Checking that the session has not expired
+    const session = await this.sessionService.validate(user.id, jwtToken);
 
     // If it had expired, handle it
+    if (!session) throw new UnauthorizedException();
 
-    // return Jwt payload
-    const res: JwtPayload = { id };
+    // return userId and session
+    const res: customUser = { id, session };
 
     return res;
   }

@@ -7,9 +7,12 @@ import {
   Post,
   UseGuards
 } from '@nestjs/common';
+import { Device } from 'common/interfaces/device.interface';
 import { User as UserEntity } from 'users/entities/user.entity';
 import { AuthService } from './auth.service';
+import { IpAddress } from './decorators/ipAddress.decorator';
 import { Public } from './decorators/public.decorator';
+import { UserAgent } from './decorators/user-agent.decorator';
 import { User } from './decorators/user.decorator';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -30,9 +33,12 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  login(@User() user: UserEntity) {
-    console.log('login');
-    return this.authService.login(user);
+  login(
+    @User() user: UserEntity,
+    @IpAddress() ip: string,
+    @UserAgent() device: Device
+  ) {
+    return this.authService.login(user, ip, device);
   }
 
   @UseGuards(JwtAuthGuard)
