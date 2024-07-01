@@ -5,15 +5,15 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { customUser } from 'common/interfaces/custom-request.interface';
+import { CustomUser } from 'common/interfaces/custom-request.interface';
 import { Device } from 'common/interfaces/device.interface';
+import { SessionService } from 'session/session.service';
 import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 import { JwtPayload } from './../common/interfaces/jwt-payload.interface';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { HashingService } from './hashing/hashing.service';
-import { SessionService } from './session/session.service';
 
 @Injectable()
 export class AuthService {
@@ -126,7 +126,7 @@ export class AuthService {
     if (!session) throw new UnauthorizedException();
 
     // return userId and session
-    const res: customUser = { id, session };
+    const res: CustomUser = { id, session };
 
     return res;
   }

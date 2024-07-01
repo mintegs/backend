@@ -4,17 +4,17 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'users/entities/user.entity';
+import { Session } from '../session/entities/session.entity';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import jwtConfig from './config/jwt.config';
-import { Session } from './entities/session.entity';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { BcryptService } from './hashing/bcrypt.service';
 import { HashingService } from './hashing/hashing.service';
 import { LoginValidationMiddleware } from './middlewares/login-validation.middleware';
-import { SessionService } from './session/session.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
+import { SessionService } from 'session/session.service';
 
 @Module({
   imports: [

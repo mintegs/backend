@@ -1,11 +1,11 @@
-import { Session } from 'auth/entities/session.entity';
 import { Request } from 'express';
+import { Session } from 'session/entities/session.entity';
 
-export interface customUser {
+export interface CustomUser {
   readonly id: string;
   readonly session: Session;
 }
 
 export interface CustomRequest extends Request {
-  readonly user: customUser;
+  readonly user: CustomUser;
 }

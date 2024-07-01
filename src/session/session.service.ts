@@ -1,15 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Session } from 'auth/entities/session.entity';
+import { CustomUser } from 'common/interfaces/custom-request.interface';
 import { Device } from 'common/interfaces/device.interface';
+import { Session } from 'session/entities/session.entity';
 import { DataSource, Raw, Repository } from 'typeorm';
+import { User } from 'users/entities/user.entity';
 
 @Injectable()
 export class SessionService {
   constructor(
     private readonly dataSource: DataSource,
     @InjectRepository(Session)
-    private readonly sessionRepository: Repository<Session>
+    private readonly sessionRepository: Repository<Session>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>
   ) {}
 
   async create(userId: string, token: string, ip: string, device: Device) {
@@ -38,5 +42,12 @@ export class SessionService {
     });
 
     return session;
+  }
+
+  async sessions({ id }: CustomUser) {
+    const user = await this.userRepository.findOne({
+      where: { id },
+      relations: ['session']
+    });
   }
 }
