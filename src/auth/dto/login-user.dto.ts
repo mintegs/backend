@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { IsPassword } from 'common/decorators/validators/is-password.decorator';
+import { IsPassword } from 'core/common/decorators/validators/is-password.decorator';
 
 export class LoginUserDto {
   @IsNotEmpty()

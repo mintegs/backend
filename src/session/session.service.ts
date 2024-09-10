@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CustomUser } from 'common/interfaces/custom-request.interface';
-import { Device } from 'common/interfaces/device.interface';
+import { CustomUser } from 'core/common/interfaces/custom-request.interface';
+import { Device } from 'core/common/interfaces/device.interface';
 import { Session } from 'session/entities/session.entity';
 import { DataSource, Raw, Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
@@ -45,7 +45,7 @@ export class SessionService {
   }
 
   async sessions({ id }: CustomUser) {
-    const user = await this.userRepository.findOne({
+    await this.userRepository.findOne({
       where: { id },
       relations: ['session']
     });

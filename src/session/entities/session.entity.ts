@@ -1,4 +1,4 @@
-import { Device } from 'common/interfaces/device.interface';
+import { Device } from 'core/common/interfaces/device.interface';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 

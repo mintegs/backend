@@ -1,5 +1,5 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { Device } from 'common/interfaces/device.interface';
+import { Device } from 'core/common/interfaces/device.interface';
 
 export const UserAgent = createParamDecorator(
   (data: unknown, ctx: ExecutionContext): Device => {

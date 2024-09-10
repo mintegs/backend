@@ -1,6 +1,6 @@
 import { IsEmail } from 'class-validator';
-import { IsPassword } from 'common/decorators/validators/is-password.decorator';
-import { IsUsername } from 'common/decorators/validators/is-username.decorator';
+import { IsPassword } from 'core/common/decorators/validators/is-password.decorator';
+import { IsUsername } from 'core/common/decorators/validators/is-username.decorator';
 
 export class RegisterUserDto {
   @IsEmail()

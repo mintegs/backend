@@ -7,7 +7,6 @@ import {
   Post,
   UseGuards
 } from '@nestjs/common';
-import { Device } from 'common/interfaces/device.interface';
 import { User as UserEntity } from 'users/entities/user.entity';
 import { AuthService } from './auth.service';
 import { IpAddress } from './decorators/ipAddress.decorator';
@@ -19,6 +18,7 @@ import { RegisterUserDto } from './dto/register-user.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { ApiTags } from '@nestjs/swagger';
+import { Device } from 'core/common/interfaces/device.interface';
 
 @Controller('auth')
 @ApiTags('auth')

@@ -1,8 +1,8 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEmail, IsEnum, IsOptional, Length } from 'class-validator';
-import { IsPassword } from 'common/decorators/validators/is-password.decorator';
-import { IsUsername } from 'common/decorators/validators/is-username.decorator';
-import { UserStatus } from 'common/enums/user-status.enum';
+import { IsPassword } from 'core/common/decorators/validators/is-password.decorator';
+import { IsUsername } from 'core/common/decorators/validators/is-username.decorator';
+import { UserStatus } from 'core/common/enums/user-status.enum';
 
 export class CreateUserDto {
   @ApiProperty({

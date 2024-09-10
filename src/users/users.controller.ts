@@ -8,8 +8,6 @@ import {
   Post,
   Query
 } from '@nestjs/common';
-import { IdDto } from 'common/dto/id.dto';
-import { RemoveDto } from 'common/dto/remove.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -20,6 +18,8 @@ import {
   ApiResponse,
   ApiTags
 } from '@nestjs/swagger';
+import { IdDto } from 'core/common/dto/id.dto';
+import { RemoveDto } from 'core/common/dto/remove.dto';
 
 @Controller('users')
 @ApiTags('users')

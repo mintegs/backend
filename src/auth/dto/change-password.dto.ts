@@ -1,4 +1,4 @@
-import { IsPassword } from 'common/decorators/validators/is-password.decorator';
+import { IsPassword } from 'core/common/decorators/validators/is-password.decorator';
 
 export class ChangePasswordDto {
   @IsPassword()
