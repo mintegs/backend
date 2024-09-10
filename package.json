@@ -25,7 +25,7 @@
     "migration:run": "yarn typeorm migration:run -d dist/core/database/data-source",
     "migration:revert": "yarn typeorm migration:revert -d dist/core/database/data-source",
     "docs": "npx @compodoc/compodoc -p tsconfig.json -s --port 3333 --theme material",
-    "prepare": "husky"
+    "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
     "@compodoc/compodoc": "^1.1.25",
