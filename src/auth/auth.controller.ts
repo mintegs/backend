@@ -18,8 +18,10 @@ import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

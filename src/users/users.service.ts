@@ -5,6 +5,9 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 
+/**
+ * Class to connect to Users table and preform business operations
+ */
 @Injectable()
 export class UsersService {
   constructor(
@@ -12,6 +15,9 @@ export class UsersService {
     private readonly userRepository: Repository<User>
   ) {}
 
+  /**
+   * The method to create a new user in the database
+   */
   async create(createUserDto: CreateUserDto) {
     try {
       // Create user
@@ -26,10 +32,16 @@ export class UsersService {
     }
   }
 
+  /**
+   * The method to get all users from the database
+   */
   async findAll() {
     return await this.userRepository.find();
   }
 
+  /**
+   * Find a single user using the ID of the user
+   */
   async findOne(id: string) {
     // Find user with id
     const user = await this.userRepository.findOneBy({ id });
@@ -41,6 +53,9 @@ export class UsersService {
     return user;
   }
 
+  /**
+   * Find and Update a single user using the ID of user
+   */
   async update(id: string, updateUserDto: UpdateUserDto) {
     try {
       // Find user with id and update data
@@ -61,6 +76,9 @@ export class UsersService {
     }
   }
 
+  /**
+   * Find and Delete a single user using the ID of user
+   */
   async remove(id: string, soft: boolean) {
     const user = await this.findOne(id);
     return soft
