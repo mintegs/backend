@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { SessionModule } from './session/session.module';
+import { SessionsModule } from './sessions/sessions.module';
 import { CoreModule } from './core/core.module';
 
 /**
@@ -16,6 +16,6 @@ import { CoreModule } from './core/core.module';
  * the integration of various features.
  */
 @Module({
-  imports: [CoreModule, AuthModule, UsersModule, SessionModule]
+  imports: [CoreModule, AuthModule, UsersModule, SessionsModule]
 })
 export class AppModule {}

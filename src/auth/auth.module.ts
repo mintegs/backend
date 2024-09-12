@@ -4,7 +4,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'users/entities/user.entity';
-import { Session } from '../session/entities/session.entity';
+import { Session } from '../sessions/entities/session.entity';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import jwtConfig from './config/jwt.config';
@@ -12,7 +12,7 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LoginValidationMiddleware } from './middlewares/login-validation.middleware';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
-import { SessionService } from 'session/session.service';
+import { SessionsService } from 'sessions/sessions.service';
 import { CommonModule } from 'core/common/common.module';
 import { UsersService } from 'users/users.service';
 
@@ -44,7 +44,7 @@ import { UsersService } from 'users/users.service';
     UsersService,
 
     // Service to handle user sessions
-    SessionService,
+    SessionsService,
 
     // Strategy for local (username/password) authentication
     LocalStrategy,

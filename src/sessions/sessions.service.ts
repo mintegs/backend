@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CustomUser } from 'core/common/interfaces/custom-request.interface';
 import { Device } from 'core/common/interfaces/device.interface';
-import { Session } from 'session/entities/session.entity';
+import { Session } from 'sessions/entities/session.entity';
 import { DataSource, Raw, Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 
@@ -13,7 +13,7 @@ import { User } from 'users/entities/user.entity';
  * validating, and retrieving user sessions.
  */
 @Injectable()
-export class SessionService {
+export class SessionsService {
   /**
    * @param dataSource DataSource instance for accessing the database
    * @param sessionRepository The Session repository for CRUD operations on Session entities

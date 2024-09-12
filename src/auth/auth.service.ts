@@ -4,7 +4,7 @@ import {
   UnauthorizedException
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { SessionService } from 'session/session.service';
+import { SessionsService } from 'sessions/sessions.service';
 import { User } from 'users/entities/user.entity';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { HashingService } from '../core/common/hashing/hashing.service';
@@ -34,7 +34,7 @@ export class AuthService {
     // Injecting the HashingService for password hashing
     private readonly hashingService: HashingService,
     // Injecting the SessionService for managing user sessions
-    private readonly sessionService: SessionService,
+    private readonly sessionService: SessionsService,
     // Injecting the JwtService for generating JWT tokens
     private readonly jwtService: JwtService
   ) {}
