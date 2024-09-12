@@ -189,12 +189,12 @@ and manage user sessions.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, hashingService: HashingService, sessionService: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, jwtService: JwtService)</code>
+<code>constructor(userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, hashingService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>, sessionService: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, jwtService: JwtService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/auth/auth.service.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/auth/auth.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -215,10 +215,10 @@ and manage user sessions.</p>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>userRepository</td>
+                                                        <td>userService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../entitys/User.html" target="_self" >Repository&lt;User&gt;</a></code>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -226,7 +226,7 @@ and manage user sessions.</p>
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>User repository for find and create user ******</p>
+                                                                <p>UserService for user management</p>
 
                                                         </td>
                                                 </tr>
@@ -234,7 +234,7 @@ and manage user sessions.</p>
                                                         <td>hashingService</td>
                                                   
                                                         <td>
-                                                                    <code>HashingService</code>
+                                                                        <code><a href="../injectables/HashingService.html" target="_self" >HashingService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -242,8 +242,6 @@ and manage user sessions.</p>
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>HashingService for password hashing and compare password</p>
-
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -307,15 +305,15 @@ and manage user sessions.</p>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>changePassword(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, undefined: <a href="../classes/ChangePasswordDto.html" target="_self">ChangePasswordDto</a>)</code>
+                    <code>changePassword(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userChangePasswordDto: <a href="../classes/UserChangePasswordDto.html" target="_self">UserChangePasswordDto</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="110"
-                                    class="link-to-prism">src/auth/auth.service.ts:110</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/auth/auth.service.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -350,8 +348,9 @@ and manage user sessions.</p>
 
                                         </tr>
                                         <tr>
+                                                <td>userChangePasswordDto</td>
                                             <td>
-                                                            <code><a href="../classes/ChangePasswordDto.html" target="_self" >ChangePasswordDto</a></code>
+                                                            <code><a href="../classes/UserChangePasswordDto.html" target="_self" >UserChangePasswordDto</a></code>
                                             </td>
 
                                             <td>
@@ -364,7 +363,7 @@ and manage user sessions.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -396,8 +395,8 @@ and manage user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/auth/auth.service.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/auth/auth.service.ts:86</a></div>
                         </td>
                     </tr>
 
@@ -473,8 +472,8 @@ and manage user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="72"
-                                    class="link-to-prism">src/auth/auth.service.ts:72</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/auth/auth.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -569,8 +568,8 @@ and manage user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/auth/auth.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/auth/auth.service.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -641,8 +640,8 @@ and manage user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="175"
-                                    class="link-to-prism">src/auth/auth.service.ts:175</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/auth/auth.service.ts:155</a></div>
                         </td>
                     </tr>
 
@@ -724,8 +723,8 @@ and manage user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="140"
-                                    class="link-to-prism">src/auth/auth.service.ts:140</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/auth/auth.service.ts:120</a></div>
                         </td>
                     </tr>
 
@@ -798,16 +797,15 @@ and manage user sessions.</p>
   UnauthorizedException
 } from &#x27;@nestjs/common&#x27;;
 import { JwtService } from &#x27;@nestjs/jwt&#x27;;
-import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { SessionService } from &#x27;session/session.service&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
 import { User } from &#x27;users/entities/user.entity&#x27;;
-import { ChangePasswordDto } from &#x27;./dto/change-password.dto&#x27;;
 import { RegisterUserDto } from &#x27;./dto/register-user.dto&#x27;;
 import { HashingService } from &#x27;../core/common/hashing/hashing.service&#x27;;
 import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
 import { JwtPayload } from &#x27;core/common/interfaces/jwt-payload.interface&#x27;;
 import { CustomUser } from &#x27;core/common/interfaces/custom-request.interface&#x27;;
+import { UsersService } from &#x27;users/users.service&#x27;;
+import { UserChangePasswordDto } from &#x27;core/common/dto/user-change-password.dto&#x27;;
 
 /**
  * AuthService is a service responsible for all authentication-related functionalities
@@ -820,14 +818,12 @@ import { CustomUser } from &#x27;core/common/interfaces/custom-request.interface
 export class AuthService {
   /**
    * Injecting dependencies using constructor injection
-   * @param userRepository User repository for find and create user ******
-   * @param hashingService HashingService for password hashing and compare password
+   * @param userService UserService for user management
    * @param sessionService SessionService for managing user sessions
    * @param jwtService JwtService for generating JWT tokens
    */
   constructor(
-    // Injecting the User repository from TypeORM ****
-    @InjectRepository(User) private readonly userRepository: Repository&lt;User&gt;,
+    private readonly userService: UsersService,
     // Injecting the HashingService for password hashing
     private readonly hashingService: HashingService,
     // Injecting the SessionService for managing user sessions
@@ -843,13 +839,8 @@ export class AuthService {
    */
   async register(registerUserDto: RegisterUserDto) {
     try {
-      // Creates a new user entity from the RegisterUserDto
-      const user &#x3D; await this.userRepository.create({
-        ...registerUserDto
-      });
-
-      // Saves the new user to the database
-      return await this.userRepository.save(user);
+      // Creates a new user and saves to database from the RegisterUserDto
+      return await this.userService.create({ ...registerUserDto });
     } catch (error) {
       // Rethrows any error that occurs during registration
       throw error;
@@ -887,7 +878,7 @@ export class AuthService {
    */
   async getProfile(id: string) {
     // Finds the user by their ID
-    const user &#x3D; await this.userRepository.findOneBy({ id });
+    const user &#x3D; await this.userService.findOneById(id);
 
     // Removes the ID from the user object, as it&#x27;s not needed in the profile
     delete user.id;
@@ -899,30 +890,18 @@ export class AuthService {
   /**
    * Changes a user&#x27;s password
    * @param id
-   * @param param1
+   * @param userChangePasswordDto
    */
   async changePassword(
     id: string,
-    { currentPassword, newPassword }: ChangePasswordDto
+    userChangePasswordDto: UserChangePasswordDto
   ) {
-    // Finds the user by their ID, only retrieving the password
-    const user &#x3D; await this.userRepository.findOne({
-      where: { id },
-      select: [&#x27;password&#x27;]
-    });
-
-    // Compares the provided current password with the stored password hash using the HashingService
-    const isMatch &#x3D; await this.hashingService.compare(
-      currentPassword,
-      user.password
-    );
-
-    // Throws an UnauthorizedException if the current password is invalid
-    if (!isMatch) throw new UnauthorizedException(&#x27;invalid password&#x27;);
-
-    // If the new password is different from the current password, updates the user&#x27;s password in the database
-    if (currentPassword !&#x3D;&#x3D; newPassword)
-      await this.userRepository.update({ id }, { password: newPassword });
+    try {
+      return await this.userService.updatePassword(id, userChangePasswordDto);
+    } catch (error) {
+      // Rethrows any error that occurs during changePassword
+      throw error;
+    }
   }
 
   /**
@@ -933,10 +912,10 @@ export class AuthService {
    */
   async validateLocal(email: string, password: string) {
     // Finds the user by their email or username, retrieving specific fields
-    const user &#x3D; await this.userRepository.findOne({
-      where: [{ email }, { username: email }],
-      select: [&#x27;id&#x27;, &#x27;role&#x27;, &#x27;status&#x27;, &#x27;password&#x27;]
-    });
+    const user &#x3D; await this.userService.findOne(
+      [{ email }, { username: email }],
+      [&#x27;id&#x27;, &#x27;role&#x27;, &#x27;status&#x27;, &#x27;password&#x27;]
+    );
 
     // Throws a NotFoundException if the user is not found
     if (!user) throw new NotFoundException(&#x27;User not found&#x27;);
@@ -968,7 +947,7 @@ export class AuthService {
    */
   async validateJwt({ id }: JwtPayload, jwtToken: string) {
     // Finds the user by their ID
-    const user &#x3D; await this.userRepository.findOneBy({ id });
+    const user &#x3D; await this.userService.findOneById(id);
 
     // Throws an UnauthorizedException if the user is not found
     if (!user) throw new UnauthorizedException();

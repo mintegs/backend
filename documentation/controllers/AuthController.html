@@ -205,7 +205,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>changePassword(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, changePasswordDto: <a href="../classes/ChangePasswordDto.html" target="_self">ChangePasswordDto</a>)</code>
+                    <code>changePassword(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userChangePasswordDto: <a href="../classes/UserChangePasswordDto.html" target="_self">UserChangePasswordDto</a>)</code>
                 </td>
             </tr>
 
@@ -260,9 +260,9 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                                <td>changePasswordDto</td>
+                                                <td>userChangePasswordDto</td>
                                             <td>
-                                                            <code><a href="../classes/ChangePasswordDto.html" target="_self" >ChangePasswordDto</a></code>
+                                                            <code><a href="../classes/UserChangePasswordDto.html" target="_self" >UserChangePasswordDto</a></code>
                                             </td>
 
                                             <td>
@@ -588,12 +588,12 @@ import { IpAddress } from &#x27;./decorators/ipAddress.decorator&#x27;;
 import { Public } from &#x27;./decorators/public.decorator&#x27;;
 import { UserAgent } from &#x27;./decorators/user-agent.decorator&#x27;;
 import { User } from &#x27;./decorators/user.decorator&#x27;;
-import { ChangePasswordDto } from &#x27;./dto/change-password.dto&#x27;;
 import { RegisterUserDto } from &#x27;./dto/register-user.dto&#x27;;
 import { JwtAuthGuard } from &#x27;./guards/jwt-auth.guard&#x27;;
 import { LocalAuthGuard } from &#x27;./guards/local-auth.guard&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
+import { UserChangePasswordDto } from &#x27;core/common/dto/user-change-password.dto&#x27;;
 
 /**
  * AuthController is responsible for handling authentication-related routes in the application
@@ -655,9 +655,9 @@ export class AuthController {
   @Post(&#x27;change-password&#x27;)
   changePassword(
     @User(&#x27;id&#x27;) userId: string,
-    @Body() changePasswordDto: ChangePasswordDto
+    @Body() userChangePasswordDto: UserChangePasswordDto
   ) {
-    return this.authService.changePassword(userId, changePasswordDto);
+    return this.authService.changePassword(userId, userChangePasswordDto);
   }
 }
 </code></pre>

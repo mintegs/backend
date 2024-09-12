@@ -157,11 +157,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#findOneById" >findOneById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#update" >update</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updatePassword" >updatePassword</a>
                             </li>
                         </ul>
                     </td>
@@ -181,12 +189,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>)</code>
+<code>constructor(userRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, hashingService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/users/users.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/users/users.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -231,6 +239,22 @@ access to user-related database operations.</li>
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>hashingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HashingService.html" target="_self" >HashingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>HashingService for password hashing and compare password</p>
+
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -267,8 +291,8 @@ access to user-related database operations.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/users/users.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/users/users.service.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -338,8 +362,8 @@ access to user-related database operations.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/users/users.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/users/users.service.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -372,15 +396,113 @@ access to user-related database operations.</li>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findOne(where: <a href="../entitys/User.html" target="_self">FindOptionsWhere&lt;User&gt; | FindOptionsWhere&lt;User&gt;[]</a>, select: <a href="../entitys/User.html" target="_self">FindOptionsSelect&lt;User&gt; | FindOptionsSelectByString&lt;User&gt;</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/users/users.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/users/users.service.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Find a single user using Where and Select query</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>where</td>
+                                            <td>
+                                                            <code><a href="../entitys/User.html" target="_self" >FindOptionsWhere&lt;User&gt; | FindOptionsWhere&lt;User&gt;[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>select</td>
+                                            <td>
+                                                            <code><a href="../entitys/User.html" target="_self" >FindOptionsSelect&lt;User&gt; | FindOptionsSelectByString&lt;User&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>[
+      &#x27;id&#x27;,
+      &#x27;email&#x27;,
+      &#x27;name&#x27;,
+      &#x27;password&#x27;,
+      &#x27;registryDates&#x27;,
+      &#x27;role&#x27;,
+      &#x27;status&#x27;,
+      &#x27;username&#x27;
+    ]</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOneById"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findOneById</b></span>
+                        <a href="#findOneById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOneById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/users/users.service.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -450,8 +572,8 @@ access to user-related database operations.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="92"
-                                    class="link-to-prism">src/users/users.service.ts:92</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/users/users.service.ts:163</a></div>
                         </td>
                     </tr>
 
@@ -533,8 +655,8 @@ access to user-related database operations.</li>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/users/users.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/users/users.service.ts:109</a></div>
                         </td>
                     </tr>
 
@@ -594,18 +716,111 @@ access to user-related database operations.</li>
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePassword"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updatePassword</b></span>
+                        <a href="#updatePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updatePassword(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, undefined: <a href="../classes/UserChangePasswordDto.html" target="_self">UserChangePasswordDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="134"
+                                    class="link-to-prism">src/users/users.service.ts:134</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Update user&#39;s password</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                            <code><a href="../classes/UserChangePasswordDto.html" target="_self" >UserChangePasswordDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException
+} from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
+import {
+  FindOptionsSelect,
+  FindOptionsSelectByString,
+  FindOptionsWhere,
+  Repository
+} from &#x27;typeorm&#x27;;
 import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
 import { UpdateUserDto } from &#x27;./dto/update-user.dto&#x27;;
 import { User } from &#x27;./entities/user.entity&#x27;;
+import { UserChangePasswordDto } from &#x27;../core/common/dto/user-change-password.dto&#x27;;
+import { HashingService } from &#x27;core/common/hashing/hashing.service&#x27;;
 
 /**
  * Class to connect to Users table and preform business operations
@@ -621,10 +836,13 @@ export class UsersService {
    * updating, or deleting User entities.
    * @param userRepository - An instance of the Repository&lt;User&gt; that provides
    * access to user-related database operations.
+   * @param hashingService HashingService for password hashing and compare password
    */
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository&lt;User&gt;
+    private readonly userRepository: Repository&lt;User&gt;,
+    // Injecting the HashingService for password hashing
+    private readonly hashingService: HashingService
   ) {}
 
   /**
@@ -652,9 +870,35 @@ export class UsersService {
   }
 
   /**
+   * Find a single user using Where and Select query
+   */
+  async findOne(
+    where: FindOptionsWhere&lt;User&gt; | FindOptionsWhere&lt;User&gt;[],
+    select: FindOptionsSelect&lt;User&gt; | FindOptionsSelectByString&lt;User&gt; &#x3D; [
+      &#x27;id&#x27;,
+      &#x27;email&#x27;,
+      &#x27;name&#x27;,
+      &#x27;password&#x27;,
+      &#x27;registryDates&#x27;,
+      &#x27;role&#x27;,
+      &#x27;status&#x27;,
+      &#x27;username&#x27;
+    ]
+  ) {
+    // Find user
+    const user &#x3D; await this.userRepository.findOne({ where, select });
+
+    // If doesn&#x27;t exists, throw error
+    if (!user) throw new NotFoundException(&#x27;user not found&#x27;);
+
+    // Otherwise return user
+    return user;
+  }
+
+  /**
    * Find a single user using the ID of the user
    */
-  async findOne(id: string) {
+  async findOneById(id: string) {
     // Find user with id
     const user &#x3D; await this.userRepository.findOneBy({ id });
 
@@ -689,10 +933,41 @@ export class UsersService {
   }
 
   /**
+   * Update user&#x27;s password
+   * @param id
+   * @param UserChangePasswordDto
+   */
+  async updatePassword(
+    id: string,
+    { currentPassword, newPassword }: UserChangePasswordDto
+  ) {
+    // Finds the user by their ID, only retrieving the password
+    const user &#x3D; await this.userRepository.findOne({
+      where: { id },
+      select: [&#x27;password&#x27;]
+    });
+
+    /**
+     * Compares the provided current password with the stored password hash using the HashingService
+     */
+    const isMatch &#x3D; await this.hashingService.compare(
+      currentPassword,
+      user.password
+    );
+
+    // Throws an UnauthorizedException if the current password is invalid
+    if (!isMatch) throw new UnauthorizedException(&#x27;invalid password&#x27;);
+
+    // If the new password is different from the current password, updates the user&#x27;s password in the database
+    if (currentPassword !&#x3D;&#x3D; newPassword)
+      await this.userRepository.update({ id }, { password: newPassword });
+  }
+
+  /**
    * Find and Delete a single user using the ID of user
    */
   async remove(id: string, soft: boolean) {
-    const user &#x3D; await this.findOne(id);
+    const user &#x3D; await this.findOneById(id);
     return soft
       ? await this.userRepository.softRemove(user)
       : await this.userRepository.remove(user);
