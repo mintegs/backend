@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { Session } from 'session/entities/session.entity';
+import { Session } from 'sessions/entities/session.entity';
 
 /**
  * Defining a CustomUser interface to represent a user object.
