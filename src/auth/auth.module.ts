@@ -14,6 +14,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { SessionService } from 'session/session.service';
 import { CommonModule } from 'core/common/common.module';
+import { UsersService } from 'users/users.service';
 
 /**
  * AuthModule is responsible for all authentication-related functionalities
@@ -36,21 +37,26 @@ import { CommonModule } from 'core/common/common.module';
 
   // Providers for authentication services, strategies, and guards
   providers: [
+    // Service to handle authenticate user
     AuthService,
+
+    // Service to handle user management
+    UsersService,
+
+    // Service to handle user sessions
+    SessionService,
 
     // Strategy for local (username/password) authentication
     LocalStrategy,
 
     // Strategy for JWT authentication
     JwtStrategy,
+
     // Apply JwtAuthGuard as a global guard for protecting routes
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard
-    },
-
-    // Service to handle user sessions
-    SessionService
+    }
   ]
 })
 

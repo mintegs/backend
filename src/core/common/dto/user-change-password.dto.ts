@@ -1,6 +1,6 @@
 import { IsPassword } from 'core/common/decorators/validators/is-password.decorator';
 
-export class ChangePasswordDto {
+export class UserChangePasswordDto {
   @IsPassword()
   readonly currentPassword: string;
 

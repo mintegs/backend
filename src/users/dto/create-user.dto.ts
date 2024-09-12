@@ -51,7 +51,7 @@ export class CreateUserDto {
   })
   @IsOptional()
   @IsEnum(UserStatus)
-  readonly status: UserStatus;
+  readonly status?: UserStatus;
 
   /**
    * Optional 'name' property with a maximum length of 30 characters
@@ -62,5 +62,5 @@ export class CreateUserDto {
   })
   @IsOptional()
   @Length(0, 30)
-  readonly name: string;
+  readonly name?: string;
 }

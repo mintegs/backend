@@ -4,16 +4,15 @@ import {
   UnauthorizedException
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { InjectRepository } from '@nestjs/typeorm';
 import { SessionService } from 'session/session.service';
-import { Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
-import { ChangePasswordDto } from './dto/change-password.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { HashingService } from '../core/common/hashing/hashing.service';
 import { Device } from 'core/common/interfaces/device.interface';
 import { JwtPayload } from 'core/common/interfaces/jwt-payload.interface';
 import { CustomUser } from 'core/common/interfaces/custom-request.interface';
+import { UsersService } from 'users/users.service';
+import { UserChangePasswordDto } from 'core/common/dto/user-change-password.dto';
 
 /**
  * AuthService is a service responsible for all authentication-related functionalities
@@ -26,14 +25,12 @@ import { CustomUser } from 'core/common/interfaces/custom-request.interface';
 export class AuthService {
   /**
    * Injecting dependencies using constructor injection
-   * @param userRepository User repository for find and create user ******
-   * @param hashingService HashingService for password hashing and compare password
+   * @param userService UserService for user management
    * @param sessionService SessionService for managing user sessions
    * @param jwtService JwtService for generating JWT tokens
    */
   constructor(
-    // Injecting the User repository from TypeORM ****
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    private readonly userService: UsersService,
     // Injecting the HashingService for password hashing
     private readonly hashingService: HashingService,
     // Injecting the SessionService for managing user sessions
@@ -49,13 +46,8 @@ export class AuthService {
    */
   async register(registerUserDto: RegisterUserDto) {
     try {
-      // Creates a new user entity from the RegisterUserDto
-      const user = await this.userRepository.create({
-        ...registerUserDto
-      });
-
-      // Saves the new user to the database
-      return await this.userRepository.save(user);
+      // Creates a new user and saves to database from the RegisterUserDto
+      return await this.userService.create({ ...registerUserDto });
     } catch (error) {
       // Rethrows any error that occurs during registration
       throw error;
@@ -93,7 +85,7 @@ export class AuthService {
    */
   async getProfile(id: string) {
     // Finds the user by their ID
-    const user = await this.userRepository.findOneBy({ id });
+    const user = await this.userService.findOneById(id);
 
     // Removes the ID from the user object, as it's not needed in the profile
     delete user.id;
@@ -105,30 +97,18 @@ export class AuthService {
   /**
    * Changes a user's password
    * @param id
-   * @param param1
+   * @param userChangePasswordDto
    */
   async changePassword(
     id: string,
-    { currentPassword, newPassword }: ChangePasswordDto
+    userChangePasswordDto: UserChangePasswordDto
   ) {
-    // Finds the user by their ID, only retrieving the password
-    const user = await this.userRepository.findOne({
-      where: { id },
-      select: ['password']
-    });
-
-    // Compares the provided current password with the stored password hash using the HashingService
-    const isMatch = await this.hashingService.compare(
-      currentPassword,
-      user.password
-    );
-
-    // Throws an UnauthorizedException if the current password is invalid
-    if (!isMatch) throw new UnauthorizedException('invalid password');
-
-    // If the new password is different from the current password, updates the user's password in the database
-    if (currentPassword !== newPassword)
-      await this.userRepository.update({ id }, { password: newPassword });
+    try {
+      return await this.userService.updatePassword(id, userChangePasswordDto);
+    } catch (error) {
+      // Rethrows any error that occurs during changePassword
+      throw error;
+    }
   }
 
   /**
@@ -139,10 +119,10 @@ export class AuthService {
    */
   async validateLocal(email: string, password: string) {
     // Finds the user by their email or username, retrieving specific fields
-    const user = await this.userRepository.findOne({
-      where: [{ email }, { username: email }],
-      select: ['id', 'role', 'status', 'password']
-    });
+    const user = await this.userService.findOne(
+      [{ email }, { username: email }],
+      ['id', 'role', 'status', 'password']
+    );
 
     // Throws a NotFoundException if the user is not found
     if (!user) throw new NotFoundException('User not found');
@@ -174,7 +154,7 @@ export class AuthService {
    */
   async validateJwt({ id }: JwtPayload, jwtToken: string) {
     // Finds the user by their ID
-    const user = await this.userRepository.findOneBy({ id });
+    const user = await this.userService.findOneById(id);
 
     // Throws an UnauthorizedException if the user is not found
     if (!user) throw new UnauthorizedException();

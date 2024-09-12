@@ -96,7 +96,7 @@ export class UsersController {
      * Extracts user ID from the request parameters
      * Calls the service method to find a user by ID
      */
-    return this.usersService.findOne(id);
+    return this.usersService.findOneById(id);
   }
 
   /**
