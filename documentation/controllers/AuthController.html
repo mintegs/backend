@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -123,6 +124,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AuthController is responsible for handling authentication-related routes in the application</p>
+
+            </p>
 
 
 
@@ -211,14 +219,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/auth/auth.controller.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/auth/auth.controller.ts:81</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Change user password</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -229,6 +239,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -243,6 +254,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>UserID is string and UUID format</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>changePasswordDto</td>
@@ -255,6 +270,8 @@
                                             </td>
 
 
+                                            <td>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -300,14 +317,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/auth/auth.controller.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/auth/auth.controller.ts:68</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Get the user profile</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -318,6 +337,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -332,6 +352,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>UserID is string and UUID format</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -379,14 +403,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/auth/auth.controller.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/auth/auth.controller.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Login an existing user</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -397,6 +423,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -411,6 +438,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>User entity</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>ip</td>
@@ -423,6 +454,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>IP address</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>device</td>
@@ -435,6 +470,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Device is object</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -480,14 +519,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/auth/auth.controller.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/auth/auth.controller.ts:38</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Register a new user</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -521,7 +562,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>User entity</p>
+
                             </div>
                 </td>
             </tr>
@@ -540,7 +582,6 @@
   Post,
   UseGuards
 } from &#x27;@nestjs/common&#x27;;
-import { Device } from &#x27;common/interfaces/device.interface&#x27;;
 import { User as UserEntity } from &#x27;users/entities/user.entity&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import { IpAddress } from &#x27;./decorators/ipAddress.decorator&#x27;;
@@ -552,18 +593,34 @@ import { RegisterUserDto } from &#x27;./dto/register-user.dto&#x27;;
 import { JwtAuthGuard } from &#x27;./guards/jwt-auth.guard&#x27;;
 import { LocalAuthGuard } from &#x27;./guards/local-auth.guard&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
 
+/**
+ * AuthController is responsible for handling authentication-related routes in the application
+ */
 @Controller(&#x27;auth&#x27;)
 @ApiTags(&#x27;auth&#x27;)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * Register a new user
+   * @param registerUserDto
+   * @returns User entity
+   */
   @Public()
   @Post(&#x27;register&#x27;)
   register(@Body() registerUserDto: RegisterUserDto) {
     return this.authService.register(registerUserDto);
   }
 
+  /**
+   * Login an existing user
+   * @param user User entity
+   * @param ip IP address
+   * @param device Device is object
+   * @returns
+   */
   @Public()
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthGuard)
@@ -576,12 +633,23 @@ export class AuthController {
     return this.authService.login(user, ip, device);
   }
 
+  /**
+   * Get the user profile
+   * @param userId UserID is string and UUID format
+   * @returns
+   */
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;profile&#x27;)
   getProfile(@User(&#x27;id&#x27;) userId: string) {
     return this.authService.getProfile(userId);
   }
 
+  /**
+   * Change user password
+   * @param userId UserID is string and UUID format
+   * @param changePasswordDto
+   * @returns
+   */
   @HttpCode(HttpStatus.OK)
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;change-password&#x27;)

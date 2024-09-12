@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>JwtStrategy class is responsible for validating JWTs using Passport.
+It extends Passport&#39;s Strategy class for JWTs and overrides the
+validation method to integrate with the application&#39;s authentication service.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -167,12 +177,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/auth/strategies/jwt.strategy.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/auth/strategies/jwt.strategy.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for JwtStrategy.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -181,6 +193,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -195,6 +208,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Configuration object for JWT containing secret and other settings.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>authService</td>
@@ -207,6 +226,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Instance of AuthService to delegate JWT validation logic.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -242,14 +267,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/auth/strategies/jwt.strategy.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/auth/strategies/jwt.strategy.ts:42</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validate method to handle the verification of the JWT.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -260,6 +287,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -274,6 +302,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Incoming request object, used to access headers and other request-specific data.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>payload</td>
@@ -286,6 +320,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The decoded payload of the JWT, containing user information.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -295,7 +335,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The user object if validation is successful; otherwise, it throws an error.</p>
+
                             </div>
                 </td>
             </tr>
@@ -311,26 +352,44 @@
 import { ConfigType } from &#x27;@nestjs/config&#x27;;
 import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { AuthService } from &#x27;auth/auth.service&#x27;;
-import jwtConfig from &#x27;auth/config/jwt.config&#x27;;
-import { JwtPayload } from &#x27;common/interfaces/jwt-payload.interface&#x27;;
-import { Request } from &#x27;express&#x27;;
-import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
+import jwtConfig from &#x27;auth/config/jwt.config&#x27;; // Import the JWT configuration
+import { JwtPayload } from &#x27;core/common/interfaces/jwt-payload.interface&#x27;; // Define the interface for JWT payload
+import { Request } from &#x27;express&#x27;; // Import Request type from Express
+import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;; // Import JWT extraction and strategy from passport-jwt
 
+/**
+ * JwtStrategy class is responsible for validating JWTs using Passport.
+ * It extends Passport&#x27;s Strategy class for JWTs and overrides the
+ * validation method to integrate with the application&#x27;s authentication service.
+ */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
+  /**
+   * Constructor for JwtStrategy.
+   * @param jwtConfiguration - Configuration object for JWT containing secret and other settings.
+   * @param authService - Instance of AuthService to delegate JWT validation logic.
+   */
   constructor(
-    @Inject(jwtConfig.KEY)
-    private readonly jwtConfiguration: ConfigType&lt;typeof jwtConfig&gt;,
-    private readonly authService: AuthService
+    @Inject(jwtConfig.KEY) // Inject the JWT configuration using the key defined in jwtConfig
+    private readonly jwtConfiguration: ConfigType&lt;typeof jwtConfig&gt;, // Retrieve configuration type for jwtConfig
+    private readonly authService: AuthService // Injecting the AuthService for validation
   ) {
+    // Call the parent constructor with options for extracting JWT and using the secret
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: jwtConfiguration.secret,
-      passReqToCallback: true
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Extracts JWT from Authorization header as Bearer token
+      secretOrKey: jwtConfiguration.secret, // Uses the secret defined in JWT configuration for verification
+      passReqToCallback: true // Enable passing the request object to the validation callback
     });
   }
 
+  /**
+   * Validate method to handle the verification of the JWT.
+   * @param req - Incoming request object, used to access headers and other request-specific data.
+   * @param payload - The decoded payload of the JWT, containing user information.
+   * @returns The user object if validation is successful; otherwise, it throws an error.
+   */
   validate(req: Request, payload: JwtPayload) {
+    // Calls the AuthService to validate the token payload and possibly retrieve user info
     return this.authService.validateJwt(
       payload,
       req.headers?.authorization.replace(&#x27;bearer &#x27;, &#x27;&#x27;)

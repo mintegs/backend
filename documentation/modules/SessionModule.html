@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -180,6 +181,13 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>Define the SessionModule using the Module decorator</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -217,9 +225,16 @@ import { User } from &#x27;users/entities/user.entity&#x27;;
 import { Session } from &#x27;./entities/session.entity&#x27;;
 import { SessionController } from &#x27;./session.controller&#x27;;
 import { SessionService } from &#x27;./session.service&#x27;;
+
+/**
+ * Define the SessionModule using the Module decorator
+ */
 @Module({
+  // Specify the entities that should be registered with TypeORM
   imports: [TypeOrmModule.forFeature([User, Session])],
+  // Register the SessionService as a provider for dependency injection
   providers: [SessionService],
+  // Register the SessionController to handle incoming requests related to sessions
   controllers: [SessionController]
 })
 export class SessionModule {}

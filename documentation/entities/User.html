@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -117,6 +118,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Define the User entity representing a user in the system</p>
+
+            </p>
 
 
             <section data-compodoc="block-index">
@@ -214,10 +222,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/users/entities/user.entity.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/users/entities/user.entity.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>User&#39;s email must be unique</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -250,10 +264,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/users/entities/user.entity.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/users/entities/user.entity.ts:16</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Generates a unique identifier for each user</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -286,10 +306,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/users/entities/user.entity.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/users/entities/user.entity.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>User&#39;s name, optional and not selected by default</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -322,10 +348,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/users/entities/user.entity.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/users/entities/user.entity.ts:40</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Password is not selected by default (for security)</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -358,10 +390,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/users/entities/user.entity.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/users/entities/user.entity.ts:58</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Embedded class for registry dates (createdAt, updatedAt, deletedAt)</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -394,10 +432,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/users/entities/user.entity.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/users/entities/user.entity.ts:52</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>User role defaults to USER</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -430,10 +474,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/users/entities/user.entity.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/users/entities/user.entity.ts:69</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Defines a one-to-many relation with the Session entity</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -466,10 +516,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/users/entities/user.entity.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/users/entities/user.entity.ts:46</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>User status, defaults to DEACTIVATE</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -502,10 +558,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/users/entities/user.entity.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/users/entities/user.entity.ts:34</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Username has a maximum length of 30 and must be unique</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -514,44 +576,83 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { RegistryDates } from &#x27;common/embedded/registry-dates.embedded&#x27;;
-import { UserRole } from &#x27;common/enums/user-role.enum&#x27;;
-import { UserStatus } from &#x27;common/enums/user-status.enum&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { RegistryDates } from &#x27;core/common/embedded/registry-dates.embedded&#x27;;
+import { UserRole } from &#x27;core/common/enums/user-role.enum&#x27;;
+import { UserStatus } from &#x27;core/common/enums/user-status.enum&#x27;;
 import { Session } from &#x27;session/entities/session.entity&#x27;;
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from &#x27;typeorm&#x27;;
 
+/**
+ * Define the User entity representing a user in the system
+ */
 @Entity()
 export class User {
+  /**
+   * Generates a unique identifier for each user
+   */
   @PrimaryGeneratedColumn(&#x27;uuid&#x27;)
   id: string;
 
+  /**
+   * User&#x27;s name, optional and not selected by default
+   */
   @Column({ length: 50, nullable: true, select: false })
   name: string;
 
+  /**
+   * User&#x27;s email must be unique
+   */
   @Column({ unique: true })
   email: string;
 
+  /**
+   * Username has a maximum length of 30 and must be unique
+   */
   @Column({ unique: true, length: 30 })
   username: string;
 
+  /**
+   * Password is not selected by default (for security)
+   */
   @Column({ select: false })
   password: string;
 
+  /**
+   * User status, defaults to DEACTIVATE
+   */
   @Column({ type: &#x27;enum&#x27;, enum: UserStatus, default: UserStatus.DEACTIVATE })
   status: UserStatus;
 
+  /**
+   * User role defaults to USER
+   */
   @Column({ type: &#x27;enum&#x27;, enum: UserRole, default: UserRole.USER })
   role: UserRole;
 
+  /**
+   * Embedded class for registry dates (createdAt, updatedAt, deletedAt)
+   */
   @Column(() &#x3D;&gt; RegistryDates, { prefix: false })
   registryDates: RegistryDates;
 
+  /**
+   * Defines a one-to-many relation with the Session entity
+   */
   @OneToMany(() &#x3D;&gt; Session, (session) &#x3D;&gt; session.owner, {
+    /**
+     * Allows sessions to be softly removed or recovered
+     */
     cascade: [&#x27;soft-remove&#x27;, &#x27;recover&#x27;]
   })
   sessions: Session[];
 
+  /**
+   * Getter to determine if the user is considered deleted based on the deletion date
+   */
   get isDeleted() {
+    /**
+     * Returns true if deleteAt is set (indicating the user is deleted)
+     */
     return !!this.registryDates.deleteAt;
   }
 }

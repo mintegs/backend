@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,16 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The SessionService class is marked as Injectable,
+which allows it to be injected into other components in the application.
+This service handles session-related operations, such as creating,
+validating, and retrieving user sessions.</p>
+
+            </p>
 
 
 
@@ -170,7 +181,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/session/session.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/session/session.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -184,6 +195,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -198,6 +210,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>DataSource instance for accessing the database</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>sessionRepository</td>
@@ -210,6 +226,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The Session repository for CRUD operations on Session entities</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>userRepository</td>
@@ -222,6 +242,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The User repository to access User entities</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -259,14 +283,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/session/session.service.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/session/session.service.ts:38</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new session for a specified user</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -336,7 +362,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>New session</p>
+
                             </div>
                 </td>
             </tr>
@@ -364,14 +391,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/session/session.service.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/session/session.service.ts:88</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves sessions for a given user****</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -404,7 +433,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Session lists</p>
+
                             </div>
                 </td>
             </tr>
@@ -432,14 +462,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/session/session.service.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/session/session.service.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validates a session based on the user ID and token.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -485,7 +517,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Object of session</p>
+
                             </div>
                 </td>
             </tr>
@@ -499,14 +532,25 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { CustomUser } from &#x27;common/interfaces/custom-request.interface&#x27;;
-import { Device } from &#x27;common/interfaces/device.interface&#x27;;
+import { CustomUser } from &#x27;core/common/interfaces/custom-request.interface&#x27;;
+import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
 import { Session } from &#x27;session/entities/session.entity&#x27;;
 import { DataSource, Raw, Repository } from &#x27;typeorm&#x27;;
 import { User } from &#x27;users/entities/user.entity&#x27;;
 
+/**
+ * The SessionService class is marked as Injectable,
+ * which allows it to be injected into other components in the application.
+ * This service handles session-related operations, such as creating,
+ * validating, and retrieving user sessions.
+ */
 @Injectable()
 export class SessionService {
+  /**
+   * @param dataSource DataSource instance for accessing the database
+   * @param sessionRepository The Session repository for CRUD operations on Session entities
+   * @param userRepository The User repository to access User entities
+   */
   constructor(
     private readonly dataSource: DataSource,
     @InjectRepository(Session)
@@ -515,7 +559,19 @@ export class SessionService {
     private readonly userRepository: Repository&lt;User&gt;
   ) {}
 
+  /**
+   * Creates a new session for a specified user
+   * @param userId
+   * @param token
+   * @param ip
+   * @param device
+   * @returns New session
+   */
   async create(userId: string, token: string, ip: string, device: Device) {
+    /**
+     * Creates a new session instance with the provided user ID, token, IP address, device information,
+     * and sets the expiry date to 31 days from now
+     */
     const session &#x3D; this.sessionRepository.create({
       owner: {
         id: userId
@@ -526,26 +582,48 @@ export class SessionService {
       expiryDate: new Date(new Date().setMilliseconds(31 * 24 * 60 * 60 * 1000))
     });
 
+    // Saves the newly created session to the database and returns it.
     return await this.sessionRepository.save(session);
   }
 
+  /**
+   * Validates a session based on the user ID and token.
+   * @param userId
+   * @param token
+   * @returns Object of session
+   */
   async validate(userId: string, token: string): Promise&lt;Session&gt; {
+    /**
+     * Finds a session that matches the user ID and token,
+     * and checks if the session has not expired by comparing the expiry date with the current date.
+     */
     const session &#x3D; await this.dataSource.getRepository(Session).findOne({
       where: {
         token,
         owner: {
           id: userId
         },
+        // Ensures the expiry date is in the future.
         expiryDate: Raw((alias) &#x3D;&gt; &#x60;${alias} &gt; NOW()&#x60;)
       }
     });
 
+    // Returns the found session or null if not found or expired.
     return session;
   }
 
+  /**
+   * Retrieves sessions for a given user****
+   * @param param0
+   * @returns Session lists
+   */
   async sessions({ id }: CustomUser) {
-    const user &#x3D; await this.userRepository.findOne({
+    /**
+     * Fetches a user by ID along with their related sessions
+     */
+    await this.userRepository.findOne({
       where: { id },
+      // Specifies that related sessions should be fetched.
       relations: [&#x27;session&#x27;]
     });
   }

@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,16 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The HashingService class is defined as an abstract service in NestJS.
+It provides an interface for hashing and comparing hashed data,
+which can be implemented by any concrete class that requires
+cryptographic hashing functionality.</p>
+
+            </p>
 
 
 
@@ -183,14 +194,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="6"
-                                    class="link-to-prism">src/auth/hashing/hashing.service.ts:6</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/auth/hashing/hashing.service.ts:26</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>The compare method is an abstract method that takes raw data
+and an encrypted string, returning a Promise that resolves to a
+boolean indicating whether the raw data matches the hashed data.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -236,7 +251,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>returns a Promise that resolves to a boolean</p>
+
                             </div>
                 </td>
             </tr>
@@ -264,14 +280,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="5"
-                                    class="link-to-prism">src/auth/hashing/hashing.service.ts:5</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/auth/hashing/hashing.service.ts:16</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>The hash method is an abstract method that takes data as a string or Buffer</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -305,7 +323,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>returns a Promise that resolves to a hashed string</p>
+
                             </div>
                 </td>
             </tr>
@@ -319,9 +338,29 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 
+/**
+ * The HashingService class is defined as an abstract service in NestJS.
+ * It provides an interface for hashing and comparing hashed data,
+ * which can be implemented by any concrete class that requires
+ * cryptographic hashing functionality.
+ */
 @Injectable()
 export abstract class HashingService {
+  /**
+   * The hash method is an abstract method that takes data as a string or Buffer
+   * @param data
+   * @returns returns a Promise that resolves to a hashed string
+   */
   abstract hash(data: string | Buffer): Promise&lt;string&gt;;
+
+  /**
+   * The compare method is an abstract method that takes raw data
+   * and an encrypted string, returning a Promise that resolves to a
+   * boolean indicating whether the raw data matches the hashed data.
+   * @param data
+   * @param encrypted
+   * @returns returns a Promise that resolves to a boolean
+   */
   abstract compare(data: string | Buffer, encrypted: string): Promise&lt;boolean&gt;;
 }
 </code></pre>

@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>BcryptService is a class responsible for hashing and comparing passwords using the bcrypt algorithm.
+The Injectable decorator allows NestJS to manage the lifecycle of the service.</p>
+
+            </p>
 
 
 
@@ -180,14 +189,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="12"
-                                    class="link-to-prism">src/auth/hashing/bcrypt.service.ts:12</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/auth/hashing/bcrypt.service.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Method to compare a plain text data with an encrypted hash.
+Returns a boolean indicating whether the data matches the encrypted hash.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -233,7 +245,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>boolean</p>
+
                             </div>
                 </td>
             </tr>
@@ -261,14 +274,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="7"
-                                    class="link-to-prism">src/auth/hashing/bcrypt.service.ts:7</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/auth/hashing/bcrypt.service.ts:17</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Method to hash a given data (string or Buffer) with a specified number of salt rounds (default is 10).</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -320,7 +335,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>stringHash</p>
+
                             </div>
                 </td>
             </tr>
@@ -336,13 +352,33 @@
 import * as bcrypt from &#x27;bcrypt&#x27;;
 import { HashingService } from &#x27;./hashing.service&#x27;;
 
+/**
+ * BcryptService is a class responsible for hashing and comparing passwords using the bcrypt algorithm.
+ * The Injectable decorator allows NestJS to manage the lifecycle of the service.
+ */
 @Injectable()
 export class BcryptService implements HashingService {
+  /**
+   * Method to hash a given data (string or Buffer) with a specified number of salt rounds (default is 10).
+   * @param data
+   * @param roundsSalt
+   * @returns stringHash
+   */
   async hash(data: string | Buffer, roundsSalt: number &#x3D; 10) {
+    // Generate a salt with the specified number of rounds.
     const getSalt &#x3D; await bcrypt.genSalt(roundsSalt);
+
+    // Return the hashed data using the generated salt.
     return bcrypt.hash(data, getSalt);
   }
 
+  /**
+   * Method to compare a plain text data with an encrypted hash.
+   * Returns a boolean indicating whether the data matches the encrypted hash.
+   * @param data
+   * @param encrypted
+   * @returns boolean
+   */
   compare(data: string | Buffer, encrypted: string) {
     return bcrypt.compare(data, encrypted);
   }

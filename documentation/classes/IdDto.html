@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,10 +120,18 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/dto/id.dto.ts</code>
+            <code>src/core/common/dto/id.dto.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This class defines a Data Transfer Object (DTO) for validating and describing
+an identifier that adheres to the UUID standard.</p>
+
+            </p>
 
 
 
@@ -191,16 +200,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The ID of the data thats need to be processed&#x27;})<br />@IsString()<br />@IsUUID()<br />
+                            @ApiProperty({description: &#x27;The ID must be string and conforms to the UUID format&#x27;})<br />@IsString()<br />@IsUUID()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/common/dto/id.dto.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/core/common/dto/id.dto.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The &#39;id&#39; property represents a unique identifier and must be a string</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -219,12 +234,25 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 import { IsString, IsUUID } from &#x27;class-validator&#x27;;
 
+/**
+ * This class defines a Data Transfer Object (DTO) for validating and describing
+ * an identifier that adheres to the UUID standard.
+ */
 export class IdDto {
+  /**
+   * The &#x27;id&#x27; property represents a unique identifier and must be a string
+   */
   @ApiProperty({
-    description: &#x27;The ID of the data thats need to be processed&#x27;
+    description: &#x27;The ID must be string and conforms to the UUID format&#x27;
   })
+
+  // Ensures the value is of type string
   @IsString()
+
+  // Enforces that the string is a valid UUID
   @IsUUID()
+
+  // Declare the property as read-only
   readonly id: string;
 }
 </code></pre>

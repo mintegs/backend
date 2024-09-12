@@ -80,7 +80,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -90,9 +90,13 @@
 
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >LoginValidationMiddleware</li>
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >GenerateTables1725986093329</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -116,24 +120,38 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/auth/middlewares/login-validation.middleware.ts</code>
+            <code>src/core/database/migrations/1725986093329-generate-tables.ts</code>
         </p>
 
 
+
+
             <p class="comment">
-                <h3>Description</h3>
+                <h3>Implements</h3>
             </p>
             <p class="comment">
-                <p>Define a middleware class for validating login user data</p>
-
+                        <code>MigrationInterface</code>
             </p>
-
 
 
             <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#name" >name</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -144,8 +162,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#use" >use</a>
+                                <a href="#down" >down</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#up" >up</a>
                             </li>
                         </ul>
                     </td>
@@ -160,6 +184,44 @@
 </section>
 
 
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="name"></a>
+                    <span class="name">
+                        <span ><b>name</b></span>
+                        <a href="#name"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;GenerateTables1725986093329&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/core/database/migrations/1725986093329-generate-tables.ts:4</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
             <section data-compodoc="block-methods">
     
     <h3 id="methods">
@@ -169,34 +231,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="use"></a>
+                    <a name="down"></a>
                     <span class="name">
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                        <span ><b>use</b></span>
-                        <a href="#use"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>down</b></span>
+                        <a href="#down"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>use(req: Request, res: Response, next: NextFunction)</code>
+                    <code>down(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/auth/middlewares/login-validation.middleware.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/core/database/migrations/1725986093329-generate-tables.ts:48</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Middleware function to handle incoming requests</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -207,14 +268,13 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>req</td>
+                                                <td>queryRunner</td>
                                             <td>
-                                                        <code>Request</code>
+                                                        <code>QueryRunner</code>
                                             </td>
 
                                             <td>
@@ -222,53 +282,86 @@
                                             </td>
 
 
-                                            <td>
-                                                    <p>Express request</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>res</td>
-                                            <td>
-                                                        <code>Response</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>Express response</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>next</td>
-                                            <td>
-                                                        <code>NextFunction</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>Express next</p>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                         </div>
                             <div class="io-description">
-                                <p>If validation is successful next request or validation errors are found throw a BadRequestException with the error details</p>
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="up"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>up</b></span>
+                        <a href="#up"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>up(queryRunner: QueryRunner)</code>
+                </td>
+            </tr>
 
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="6"
+                                    class="link-to-prism">src/core/database/migrations/1725986093329-generate-tables.ts:6</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>queryRunner</td>
+                                            <td>
+                                                        <code>QueryRunner</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
                             </div>
                 </td>
             </tr>
@@ -276,61 +369,83 @@
     </table>
 </section>
 
+
+
+
+
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  BadRequestException,
-  Injectable,
-  NestMiddleware
-} from &#x27;@nestjs/common&#x27;;
-import { LoginUserDto } from &#x27;auth/dto/login-user.dto&#x27;;
-import { plainToInstance } from &#x27;class-transformer&#x27;;
-import { validate } from &#x27;class-validator&#x27;;
-import { NextFunction, Request, Response } from &#x27;express&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MigrationInterface, QueryRunner } from &quot;typeorm&quot;;
 
-/**
- * Define a middleware class for validating login user data
- */
-@Injectable()
-export class LoginValidationMiddleware implements NestMiddleware {
-  /**
-   * Middleware function to handle incoming requests
-   * @param req Express request
-   * @param res Express response
-   * @param next Express next
-   * @returns If validation is successful next request or validation errors are found throw a BadRequestException with the error details
-   */
-  async use(req: Request, res: Response, next: NextFunction) {
-    // Convert the request body to a LoginUserDto instance
-    const loginDto &#x3D; plainToInstance(LoginUserDto, req.body);
+export class GenerateTables1725986093329 implements MigrationInterface {
+    name &#x3D; &#x27;GenerateTables1725986093329&#x27;
 
-    // Validate the loginDto using class-validator
-    // - whitelist: true enforces only the properties defined in the DTO
-    // - forbidNonWhitelisted: true rejects any properties not defined in the DTO
-    const errors &#x3D; await validate(loginDto, {
-      whitelist: true,
-      forbidNonWhitelisted: true
-    });
-
-    // If validation errors are found, throw a BadRequestException with the error details
-    if (errors.length) {
-      throw new BadRequestException(errors);
+    public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+        await queryRunner.query(&#x60;
+            CREATE TABLE &quot;session&quot; (
+                &quot;id&quot; uuid NOT NULL DEFAULT uuid_generate_v4(),
+                &quot;token&quot; character varying NOT NULL,
+                &quot;device&quot; json NOT NULL,
+                &quot;ip&quot; character varying NOT NULL,
+                &quot;expiryDate&quot; TIMESTAMP NOT NULL,
+                &quot;ownerId&quot; uuid NOT NULL,
+                CONSTRAINT &quot;UQ_232f8e85d7633bd6ddfad421696&quot; UNIQUE (&quot;token&quot;),
+                CONSTRAINT &quot;PK_f55da76ac1c3ac420f444d2ff11&quot; PRIMARY KEY (&quot;id&quot;)
+            )
+        &#x60;);
+        await queryRunner.query(&#x60;
+            CREATE TYPE &quot;public&quot;.&quot;user_status_enum&quot; AS ENUM(&#x27;ACTIVATE&#x27;, &#x27;DEACTIVATE&#x27;, &#x27;SUSPEND&#x27;)
+        &#x60;);
+        await queryRunner.query(&#x60;
+            CREATE TYPE &quot;public&quot;.&quot;user_role_enum&quot; AS ENUM(&#x27;ADMIN&#x27;, &#x27;USER&#x27;)
+        &#x60;);
+        await queryRunner.query(&#x60;
+            CREATE TABLE &quot;user&quot; (
+                &quot;id&quot; uuid NOT NULL DEFAULT uuid_generate_v4(),
+                &quot;name&quot; character varying(50),
+                &quot;email&quot; character varying NOT NULL,
+                &quot;username&quot; character varying(30) NOT NULL,
+                &quot;password&quot; character varying NOT NULL,
+                &quot;status&quot; &quot;public&quot;.&quot;user_status_enum&quot; NOT NULL DEFAULT &#x27;DEACTIVATE&#x27;,
+                &quot;role&quot; &quot;public&quot;.&quot;user_role_enum&quot; NOT NULL DEFAULT &#x27;USER&#x27;,
+                &quot;createdAt&quot; TIMESTAMP NOT NULL DEFAULT now(),
+                &quot;updatedAt&quot; TIMESTAMP NOT NULL DEFAULT now(),
+                &quot;deleteAt&quot; TIMESTAMP,
+                CONSTRAINT &quot;UQ_e12875dfb3b1d92d7d7c5377e22&quot; UNIQUE (&quot;email&quot;),
+                CONSTRAINT &quot;UQ_78a916df40e02a9deb1c4b75edb&quot; UNIQUE (&quot;username&quot;),
+                CONSTRAINT &quot;PK_cace4a159ff9f2512dd42373760&quot; PRIMARY KEY (&quot;id&quot;)
+            )
+        &#x60;);
+        await queryRunner.query(&#x60;
+            ALTER TABLE &quot;session&quot;
+            ADD CONSTRAINT &quot;FK_e1dde0bd0402cc9b1967c40a1b3&quot; FOREIGN KEY (&quot;ownerId&quot;) REFERENCES &quot;user&quot;(&quot;id&quot;) ON DELETE NO ACTION ON UPDATE NO ACTION
+        &#x60;);
     }
 
-    // If validation is successful, proceed to the next middleware or route handler
-    next();
-  }
+    public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+        await queryRunner.query(&#x60;
+            ALTER TABLE &quot;session&quot; DROP CONSTRAINT &quot;FK_e1dde0bd0402cc9b1967c40a1b3&quot;
+        &#x60;);
+        await queryRunner.query(&#x60;
+            DROP TABLE &quot;user&quot;
+        &#x60;);
+        await queryRunner.query(&#x60;
+            DROP TYPE &quot;public&quot;.&quot;user_role_enum&quot;
+        &#x60;);
+        await queryRunner.query(&#x60;
+            DROP TYPE &quot;public&quot;.&quot;user_status_enum&quot;
+        &#x60;);
+        await queryRunner.query(&#x60;
+            DROP TABLE &quot;session&quot;
+        &#x60;);
+    }
+
 }
 </code></pre>
     </div>
-
 </div>
-
-
-
-
 
 
 
@@ -365,8 +480,8 @@ export class LoginValidationMiddleware implements NestMiddleware {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoginValidationMiddleware.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'GenerateTables1725986093329.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

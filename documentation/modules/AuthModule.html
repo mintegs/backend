@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -117,13 +118,13 @@
 <title>cluster_AuthModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 595,-268 595,-70 8,-70"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_AuthModule_exports</title>
-<polygon fill="none" stroke="black" points="254,-208 254,-260 378,-260 378,-208 254,-208"/>
-</g>
 <g id="clust6" class="cluster">
 <title>cluster_AuthModule_providers</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 587,-130 587,-78 16,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_AuthModule_exports</title>
+<polygon fill="none" stroke="black" points="254,-208 254,-260 378,-260 378,-208 254,-208"/>
 </g>
 <!-- HashingService  -->
 <g id="node1" class="node">
@@ -232,6 +233,13 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>AuthModule is responsible for all authentication-related functionalities</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -265,12 +273,12 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module exports"><span
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module imports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../injectables/HashingService.html">HashingService</a>
+                            <a href="../modules/CommonModule.html">CommonModule</a>
                         </li>
                     </ul>
                 </div>
@@ -302,8 +310,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/auth/auth.module.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/auth/auth.module.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -365,38 +373,58 @@ import { AuthController } from &#x27;./auth.controller&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
 import jwtConfig from &#x27;./config/jwt.config&#x27;;
 import { JwtAuthGuard } from &#x27;./guards/jwt-auth.guard&#x27;;
-import { BcryptService } from &#x27;./hashing/bcrypt.service&#x27;;
-import { HashingService } from &#x27;./hashing/hashing.service&#x27;;
 import { LoginValidationMiddleware } from &#x27;./middlewares/login-validation.middleware&#x27;;
 import { JwtStrategy } from &#x27;./strategies/jwt.strategy&#x27;;
 import { LocalStrategy } from &#x27;./strategies/local.strategy&#x27;;
 import { SessionService } from &#x27;session/session.service&#x27;;
+import { CommonModule } from &#x27;core/common/common.module&#x27;;
 
+/**
+ * AuthModule is responsible for all authentication-related functionalities
+ */
 @Module({
   imports: [
+    // Import TypeORM module for User and Session entities
     TypeOrmModule.forFeature([User, Session]),
+
+    // Register JWT module asynchronously using configuration from jwtConfig
     JwtModule.registerAsync(jwtConfig.asProvider()),
-    ConfigModule.forFeature(jwtConfig)
+
+    // Import configuration module for environment-specific settings
+    ConfigModule.forFeature(jwtConfig),
+
+    CommonModule
   ],
+  // Define the controllers related to authentication
   controllers: [AuthController],
+
+  // Providers for authentication services, strategies, and guards
   providers: [
     AuthService,
-    {
-      provide: HashingService,
-      useClass: BcryptService
-    },
+
+    // Strategy for local (username/password) authentication
     LocalStrategy,
+
+    // Strategy for JWT authentication
     JwtStrategy,
+    // Apply JwtAuthGuard as a global guard for protecting routes
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard
     },
+
+    // Service to handle user sessions
     SessionService
-  ],
-  exports: [HashingService]
+  ]
 })
+
+/**
+ * AuthModule implements NestModule, allowing for middleware configuration
+ */
 export class AuthModule implements NestModule {
+  // Configure the middleware for specific routes
   configure(consumer: MiddlewareConsumer) {
+    // Apply LoginValidationMiddleware to the &#x27;auth/login&#x27; route
     consumer.apply(LoginValidationMiddleware).forRoutes(&#x27;auth/login&#x27;);
   }
 }

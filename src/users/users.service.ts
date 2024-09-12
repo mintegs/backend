@@ -10,6 +10,16 @@ import { User } from './entities/user.entity';
  */
 @Injectable()
 export class UsersService {
+  /**
+   * Constructor for the class, which injects the User repository.
+   * The @InjectRepository(User) decorator is used to get an instance of the
+   * User repository from the dependency injection container. This allows
+   * the class to interact with the database using the userRepository
+   * instance, enabling operations such as creating, retrieving,
+   * updating, or deleting User entities.
+   * @param userRepository - An instance of the Repository<User> that provides
+   * access to user-related database operations.
+   */
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>

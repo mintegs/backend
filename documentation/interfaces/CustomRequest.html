@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -122,10 +123,19 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/interfaces/custom-request.interface.ts</code>
+            <code>src/core/common/interfaces/custom-request.interface.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Extending the built-in Request type from Express to create a CustomRequest interface.
+This interface includes all properties of the standard Request object,
+with an additional &#39;user&#39; property that conforms to the CustomUser interface.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -194,6 +204,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The User object is id and session of current user</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -204,12 +220,36 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Request } from &#x27;express&#x27;;
 import { Session } from &#x27;session/entities/session.entity&#x27;;
 
+/**
+ * Defining a CustomUser interface to represent a user object.
+ * This interface includes a user ID and a session object,
+ * allowing for structured user information with session details.
+ * @property {string} id - The ID of current user.
+ * @property {string} session - The Session object of current user like token, expirationDate, device and IP address.
+ */
 export interface CustomUser {
+  /**
+   * The ID of current user
+   */
   readonly id: string;
+
+  /**
+   * The Session object of current user like token, expirationDate, device and IP address
+   */
   readonly session: Session;
 }
 
+/**
+ * Extending the built-in Request type from Express to create a CustomRequest interface.
+ * This interface includes all properties of the standard Request object,
+ * with an additional &#x27;user&#x27; property that conforms to the CustomUser interface.
+ * @property {string} user - The user of the CustomUser.
+ * @property {string} version - The version of the device.
+ */
 export interface CustomRequest extends Request {
+  /**
+   * The User object is id and session of current user
+   */
   readonly user: CustomUser;
 }
 </code></pre>

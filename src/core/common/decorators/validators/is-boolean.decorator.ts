@@ -6,7 +6,10 @@ import {
 import { ToBoolean } from '../transforms/to-boolean.decorator';
 
 /**
- * Checks if the value is a boolean. Works with query params
+ * Create a custom decorator 'IsBoolean' that combines the default class-validator
+ * 'IsBoolean' validation with a custom transformation decorator 'ToBoolean'.
+ * This allows for both validation of boolean values and automatic conversion
+ * of input values into booleans before validation occurs.
  */
 export const IsBoolean = (validationOptions?: ValidationOptions) =>
   applyDecorators(DefaultIsBoolean(validationOptions), ToBoolean());

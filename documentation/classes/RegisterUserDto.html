@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -297,8 +298,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsEmail } from &#x27;class-validator&#x27;;
-import { IsPassword } from &#x27;common/decorators/validators/is-password.decorator&#x27;;
-import { IsUsername } from &#x27;common/decorators/validators/is-username.decorator&#x27;;
+import { IsPassword } from &#x27;core/common/decorators/validators/is-password.decorator&#x27;;
+import { IsUsername } from &#x27;core/common/decorators/validators/is-username.decorator&#x27;;
 
 export class RegisterUserDto {
   @IsEmail()

@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -112,15 +113,34 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/common.module.ts</code>
+            <code>src/core/common/common.module.ts</code>
         </p>
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>Define a module called CommonModule
+Provide a global validation pipe for the application, which is injected into the NestJS application context
+Use a new instance of ValidationPipe with custom options defined in VALIDATION_PIPE_OPTIONS</p>
+
+        </p>
 
 
         <div class="container-fluid module">
             <div class="row">
+                <div class="col-sm-3">
+                    <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module exports"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../injectables/HashingService.html">HashingService</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -132,14 +152,28 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module, ValidationPipe } from &#x27;@nestjs/common&#x27;;
 import { APP_PIPE } from &#x27;@nestjs/core&#x27;;
 import { VALIDATION_PIPE_OPTIONS } from &#x27;./util/common.constants&#x27;;
+import { HashingService } from &#x27;./hashing/hashing.service&#x27;;
+import { BcryptService } from &#x27;./hashing/bcrypt.service&#x27;;
 
+/**
+ * Define a module called CommonModule
+ * Provide a global validation pipe for the application, which is injected into the NestJS application context
+ * Use a new instance of ValidationPipe with custom options defined in VALIDATION_PIPE_OPTIONS
+ */
 @Module({
   providers: [
+    {
+      // Use BcryptService as the implementation of HashingService
+      provide: HashingService,
+      useClass: BcryptService
+    },
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe(VALIDATION_PIPE_OPTIONS)
     }
-  ]
+  ],
+  // Export the HashingService for use in other modules
+  exports: [HashingService]
 })
 export class CommonModule {}
 </code></pre>

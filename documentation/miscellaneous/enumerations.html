@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -112,10 +113,10 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#UserRole" title="src/common/enums/user-role.enum.ts" ><b>UserRole</b>&nbsp;&nbsp;&nbsp;(src/.../user-role.enum.ts)</a>
+                            <a href="#UserRole" title="src/core/common/enums/user-role.enum.ts" ><b>UserRole</b>&nbsp;&nbsp;&nbsp;(src/.../user-role.enum.ts)</a>
                         </li>
                         <li>
-                            <a href="#UserStatus" title="src/common/enums/user-status.enum.ts" ><b>UserStatus</b>&nbsp;&nbsp;&nbsp;(src/.../user-status.enum.ts)</a>
+                            <a href="#UserStatus" title="src/core/common/enums/user-status.enum.ts" ><b>UserStatus</b>&nbsp;&nbsp;&nbsp;(src/.../user-status.enum.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -124,7 +125,7 @@
     </table>
 </section>
 
-    <h3>src/common/enums/user-role.enum.ts</h3>
+    <h3>src/core/common/enums/user-role.enum.ts</h3>
     <section data-compodoc="block-enums">
         <table class="table table-sm table-bordered">
             <tbody>
@@ -134,6 +135,17 @@
                         <span class="name "><b>UserRole</b><a href="#UserRole"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>This enum defines the different roles a user can have in the application.</p>
+<ul>
+<li>ADMIN: Represents a user with administrative privileges, allowing full access to the system.</li>
+<li>AUTHOR: Represents a user who can create and manage content, but with limited permissions compared to an admin.</li>
+<li>USER: Represents a regular user with basic access, mainly for viewing content and participating in the application.</li>
+</ul>
+</div>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
                                 &nbsp;ADMIN
@@ -142,6 +154,16 @@
                         <tr>
                             <td class="col-md-4">
                                 <i>Value : </i><code>ADMIN</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                &nbsp;AUTHOR
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Value : </i><code>AUTHOR</code>
                             </td>
                         </tr>
                         <tr>
@@ -157,7 +179,7 @@
             </tbody>
         </table>
 </section>
-    <h3>src/common/enums/user-status.enum.ts</h3>
+    <h3>src/core/common/enums/user-status.enum.ts</h3>
     <section data-compodoc="block-enums">
         <table class="table table-sm table-bordered">
             <tbody>
@@ -167,6 +189,17 @@
                         <span class="name "><b>UserStatus</b><a href="#UserStatus"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Define an enumeration for user status in the application</p>
+<ul>
+<li>ACTIVATE: Represents a user who is currently active and has access to the system</li>
+<li>DEACTIVATE: Represents a user who has been deactivated and no longer has access to the system</li>
+<li>SUSPEND: Represents a user whose access is temporarily suspended, possibly due to violations or other reasons</li>
+</ul>
+</div>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
                                 &nbsp;ACTIVATE

@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,10 +120,19 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/embedded/registry-dates.embedded.ts</code>
+            <code>src/core/common/embedded/registry-dates.embedded.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A class representing common date fields for an entity in the database.
+This class uses TypeORM decorators to automatically manage
+the creation, update, and deletion dates of the entity.</p>
+
+            </p>
 
 
 
@@ -199,10 +209,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/common/embedded/registry-dates.embedded.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:14</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The date and time when the entity was created.
+This field is automatically populated by TypeORM upon entity creation.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -235,10 +252,18 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/common/embedded/registry-dates.embedded.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:29</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The date and time when the entity was soft deleted.
+This field is automatically populated when the entity is marked as deleted,
+allowing for soft deletion functionality without removing the record from the database.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -271,10 +296,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/common/embedded/registry-dates.embedded.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The date and time when the entity was last updated.
+This field is automatically updated by TypeORM whenever the entity is modified.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -292,13 +324,31 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from &#x27;typeorm&#x27;;
 
+/**
+ * A class representing common date fields for an entity in the database.
+ * This class uses TypeORM decorators to automatically manage
+ * the creation, update, and deletion dates of the entity.
+ */
 export class RegistryDates {
+  /**
+   * The date and time when the entity was created.
+   * This field is automatically populated by TypeORM upon entity creation.
+   */
   @CreateDateColumn()
   createdAt: Date;
 
+  /**
+   * The date and time when the entity was last updated.
+   * This field is automatically updated by TypeORM whenever the entity is modified.
+   */
   @UpdateDateColumn()
   updatedAt: Date;
 
+  /**
+   * The date and time when the entity was soft deleted.
+   * This field is automatically populated when the entity is marked as deleted,
+   * allowing for soft deletion functionality without removing the record from the database.
+   */
   @DeleteDateColumn()
   deleteAt: Date;
 }

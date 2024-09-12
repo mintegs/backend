@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -122,10 +123,21 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/interfaces/jwt-payload.interface.ts</code>
+            <code>src/core/common/interfaces/jwt-payload.interface.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This interface represents the structure of a JWT (JSON Web Token) payload.
+It contains a single property &#39;id&#39;, which is a string that uniquely identifies
+the user or entity associated with the token. The &#39;readonly&#39; modifier ensures
+that the &#39;id&#39; cannot be modified after it has been set, promoting immutability
+and helping to maintain the integrity of the JWT payload.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -188,6 +200,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The ID of user is string and UUID format</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -196,6 +214,9 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface JwtPayload {
+  /**
+   * The ID of user is string and UUID format
+   */
   readonly id: string;
 }
 </code></pre>

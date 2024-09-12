@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,10 +120,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/common/dto/remove.dto.ts</code>
+            <code>src/core/common/dto/remove.dto.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Define a Data Transfer Object (DTO) class for removing resources</p>
+
+            </p>
 
 
 
@@ -140,6 +148,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
@@ -172,6 +181,7 @@
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>soft</b></span>
                         <a href="#soft"><span class="icon ion-ios-link"></span></a>
@@ -189,16 +199,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsOptional()<br />@IsBoolean()<br />
+                            @ApiPropertyOptional({description: &#x27;The &quot;soft&quot; property is optional and has type boolean&#x27;})<br />@IsOptional()<br />@IsBoolean()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/common/dto/remove.dto.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/core/common/dto/remove.dto.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Define a property &#39;soft&#39; that is optional and of type boolean</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -215,11 +231,27 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsOptional } from &#x27;class-validator&#x27;;
-import { IsBoolean } from &#x27;common/decorators/validators/is-boolean.decorator&#x27;;
+import { IsBoolean } from &#x27;../decorators/validators/is-boolean.decorator&#x27;;
+import { ApiPropertyOptional } from &#x27;@nestjs/swagger&#x27;;
 
+/**
+ * Define a Data Transfer Object (DTO) class for removing resources
+ */
 export class RemoveDto {
+  /**
+   * Define a property &#x27;soft&#x27; that is optional and of type boolean
+   */
+  @ApiPropertyOptional({
+    description: &#x27;The &quot;soft&quot; property is optional and has type boolean&#x27;
+  })
+
+  // Indicate that the &#x27;soft&#x27; property is optional in the request
   @IsOptional()
+
+  // Validate that the &#x27;soft&#x27; property, if provided, must be a boolean value
   @IsBoolean()
+
+  // Declare the property as read-only
   readonly soft: boolean;
 }
 </code></pre>

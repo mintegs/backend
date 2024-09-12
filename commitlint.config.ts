@@ -1,5 +1,8 @@
 import type { UserConfig } from '@commitlint/types';
 
+/**
+ * Check messages of commit with this format
+ */
 const Configuration: UserConfig = {
   extends: ['@commitlint/config-conventional'],
   parserPreset: 'conventional-changelog-atom',

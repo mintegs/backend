@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -123,6 +124,17 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The SessionController handles incoming requests related to sessions.
+It is decorated with the Controller decorator, indicating that it
+is a NestJS controller responsible for processing routes that start
+with &#39;session&#39;. Additional route handling methods can be added in
+this class to define specific actions for session management.</p>
+
+            </p>
 
 
 
@@ -134,6 +146,13 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller } from &#x27;@nestjs/common&#x27;;
 
+/**
+ * The SessionController handles incoming requests related to sessions.
+ * It is decorated with the Controller decorator, indicating that it
+ * is a NestJS controller responsible for processing routes that start
+ * with &#x27;session&#x27;. Additional route handling methods can be added in
+ * this class to define specific actions for session management.
+ */
 @Controller(&#x27;session&#x27;)
 export class SessionController {}
 </code></pre>

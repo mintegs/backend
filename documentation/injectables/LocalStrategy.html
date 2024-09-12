@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The LocalStrategy class is a Passport strategy for authenticating users based on email and password.
+It extends the PassportStrategy class, which allows integration of the Passport local strategy within a NestJS application.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -167,12 +176,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/auth/strategies/local.strategy.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/auth/strategies/local.strategy.ts:12</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>The constructor takes in an AuthService instance, which contains methods for validating user credentials.
+It also calls the super constructor of PassportStrategy with options to use &#39;email&#39; as the field for the username.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -230,14 +242,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="12"
-                                    class="link-to-prism">src/auth/strategies/local.strategy.ts:12</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/auth/strategies/local.strategy.ts:30</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>The validate method is called by Passport after the user submits their credentials.
+It invokes the AuthService&#39;s validateLocal method to check if the provided email and password are valid.
+If authentication is successful, it should return the user object; otherwise, it will throw an error.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -283,7 +299,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>promise user object</p>
+
                             </div>
                 </td>
             </tr>
@@ -300,12 +317,29 @@ import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { AuthService } from &#x27;auth/auth.service&#x27;;
 import { Strategy } from &#x27;passport-local&#x27;;
 
+/**
+ * The LocalStrategy class is a Passport strategy for authenticating users based on email and password.
+ * It extends the PassportStrategy class, which allows integration of the Passport local strategy within a NestJS application.
+ */
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
+  /**
+   * The constructor takes in an AuthService instance, which contains methods for validating user credentials.
+   * It also calls the super constructor of PassportStrategy with options to use &#x27;email&#x27; as the field for the username.
+   * @param authService
+   */
   constructor(private readonly authService: AuthService) {
     super({ usernameField: &#x27;email&#x27; });
   }
 
+  /**
+   * The validate method is called by Passport after the user submits their credentials.
+   * It invokes the AuthService&#x27;s validateLocal method to check if the provided email and password are valid.
+   * If authentication is successful, it should return the user object; otherwise, it will throw an error.
+   * @param email
+   * @param password
+   * @returns promise user object
+   */
   validate(email: string, password: string) {
     return this.authService.validateLocal(email, password);
   }

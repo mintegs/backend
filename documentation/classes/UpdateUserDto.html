@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -123,6 +124,16 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>UpdateUserDto class is a Data Transfer Object (DTO) that
+extends the CreateUserDto. This class is used for validating
+and documenting the structure of data sent to the API for updating
+an existing user.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -197,16 +208,23 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The ID of the user thats need to be Updated&#x27;})<br />@IsString()<br />@IsUUID()<br />
+                            @ApiProperty({description: &#x27;The ID of the user that needs to be updated.&#x27;})<br />@IsString()<br />@IsUUID()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/users/dto/update-user.dto.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/users/dto/update-user.dto.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The ID of the user that needs to be updated.
+This property is required and should be a valid UUID string.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -226,9 +244,21 @@
 import { CreateUserDto } from &#x27;./create-user.dto&#x27;;
 import { ApiProperty, PartialType } from &#x27;@nestjs/swagger&#x27;;
 
+/**
+ * UpdateUserDto class is a Data Transfer Object (DTO) that
+ * extends the CreateUserDto. This class is used for validating
+ * and documenting the structure of data sent to the API for updating
+ * an existing user.
+ */
 export class UpdateUserDto extends PartialType(CreateUserDto) {
+  /**
+   * The ID of the user that needs to be updated.
+   * This property is required and should be a valid UUID string.
+   * @type {string}
+   * @example &quot;dcbec18c-2bdd-4e7b-9f53-8721c3c99ea4&quot;
+   */
   @ApiProperty({
-    description: &#x27;The ID of the user thats need to be Updated&#x27;
+    description: &#x27;The ID of the user that needs to be updated.&#x27;
   })
   @IsString()
   @IsUUID()

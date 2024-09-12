@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,17 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AuthService is a service responsible for all authentication-related functionalities
+in the application, including user registration, login, profile retrieval
+and JWT validation. It utilizes various services and
+repositories provided by NestJS and TypeORM to interact with the database
+and manage user sessions.</p>
+
+            </p>
 
 
 
@@ -177,17 +189,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, hashingService: <a href="../injectables/HashingService.html" target="_self">HashingService</a>, sessionService: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, jwtService: JwtService)</code>
+<code>constructor(userRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, hashingService: HashingService, sessionService: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, jwtService: JwtService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/auth/auth.service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/auth/auth.service.ts:26</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Injecting dependencies using constructor injection</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -196,6 +210,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -210,18 +225,26 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>User repository for find and create user ******</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>hashingService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/HashingService.html" target="_self" >HashingService</a></code>
+                                                                    <code>HashingService</code>
                                                         </td>
                                                   
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>HashingService for password hashing and compare password</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>sessionService</td>
@@ -234,6 +257,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>SessionService for managing user sessions</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>jwtService</td>
@@ -246,6 +273,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>JwtService for generating JWT tokens</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -283,14 +314,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/auth/auth.service.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/auth/auth.service.ts:110</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Changes a user&#39;s password</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -363,14 +396,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/auth/auth.service.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/auth/auth.service.ts:94</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Registers a new user ****</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -381,6 +416,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -395,6 +431,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The ID is string and UUID format</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -404,7 +444,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Object of user data</p>
+
                             </div>
                 </td>
             </tr>
@@ -432,14 +473,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/auth/auth.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/auth/auth.service.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Login user and generates a JWT token</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -497,7 +540,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Object of user and JWT token</p>
+
                             </div>
                 </td>
             </tr>
@@ -525,14 +569,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/auth/auth.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/auth/auth.service.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Registers a new user ***</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -566,7 +612,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Object of user data</p>
+
                             </div>
                 </td>
             </tr>
@@ -594,14 +641,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="115"
-                                    class="link-to-prism">src/auth/auth.service.ts:115</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/auth/auth.service.ts:175</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validates a JWT token and retrieves the user information ***</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -646,7 +695,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>UserId and object of session</p>
+
                             </div>
                 </td>
             </tr>
@@ -674,14 +724,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="88"
-                                    class="link-to-prism">src/auth/auth.service.ts:88</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/auth/auth.service.ts:140</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validates a user&#39;s credentials using email or username and password ***</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -727,7 +779,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Object of user data</p>
+
                             </div>
                 </td>
             </tr>
@@ -746,129 +799,190 @@
 } from &#x27;@nestjs/common&#x27;;
 import { JwtService } from &#x27;@nestjs/jwt&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { CustomUser } from &#x27;common/interfaces/custom-request.interface&#x27;;
-import { Device } from &#x27;common/interfaces/device.interface&#x27;;
 import { SessionService } from &#x27;session/session.service&#x27;;
 import { Repository } from &#x27;typeorm&#x27;;
 import { User } from &#x27;users/entities/user.entity&#x27;;
-import { JwtPayload } from &#x27;./../common/interfaces/jwt-payload.interface&#x27;;
 import { ChangePasswordDto } from &#x27;./dto/change-password.dto&#x27;;
 import { RegisterUserDto } from &#x27;./dto/register-user.dto&#x27;;
-import { HashingService } from &#x27;./hashing/hashing.service&#x27;;
+import { HashingService } from &#x27;../core/common/hashing/hashing.service&#x27;;
+import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
+import { JwtPayload } from &#x27;core/common/interfaces/jwt-payload.interface&#x27;;
+import { CustomUser } from &#x27;core/common/interfaces/custom-request.interface&#x27;;
 
+/**
+ * AuthService is a service responsible for all authentication-related functionalities
+ * in the application, including user registration, login, profile retrieval
+ * and JWT validation. It utilizes various services and
+ * repositories provided by NestJS and TypeORM to interact with the database
+ * and manage user sessions.
+ */
 @Injectable()
 export class AuthService {
+  /**
+   * Injecting dependencies using constructor injection
+   * @param userRepository User repository for find and create user ******
+   * @param hashingService HashingService for password hashing and compare password
+   * @param sessionService SessionService for managing user sessions
+   * @param jwtService JwtService for generating JWT tokens
+   */
   constructor(
+    // Injecting the User repository from TypeORM ****
     @InjectRepository(User) private readonly userRepository: Repository&lt;User&gt;,
+    // Injecting the HashingService for password hashing
     private readonly hashingService: HashingService,
+    // Injecting the SessionService for managing user sessions
     private readonly sessionService: SessionService,
+    // Injecting the JwtService for generating JWT tokens
     private readonly jwtService: JwtService
   ) {}
 
+  /**
+   * Registers a new user ***
+   * @param registerUserDto
+   * @returns Object of user data
+   */
   async register(registerUserDto: RegisterUserDto) {
     try {
-      // Create user
+      // Creates a new user entity from the RegisterUserDto
       const user &#x3D; await this.userRepository.create({
         ...registerUserDto
       });
 
-      // Save and return it
+      // Saves the new user to the database
       return await this.userRepository.save(user);
     } catch (error) {
+      // Rethrows any error that occurs during registration
       throw error;
     }
   }
 
+  /**
+   * Login user and generates a JWT token
+   * @param user
+   * @param ip
+   * @param device
+   * @returns Object of user and JWT token
+   */
   async login(user: User, ip: string, device: Device) {
+    // Creates a payload for the JWT token, containing the user&#x27;s ID
     const payload &#x3D; { id: user.id };
-    // generate jwt token
+
+    // Generates a JWT token using the JwtService
     const token &#x3D; this.jwtService.sign(payload);
 
-    // create new session
+    // Creates a new session for the user, storing the token, IP address, and device information
     await this.sessionService.create(user.id, token, ip, device);
 
-    // return user data and jwt token
+    // Returns the user data and the JWT token
     return {
       ...user,
       token: this.jwtService.sign(payload)
     };
   }
 
+  /**
+   * Registers a new user ****
+   * @param id The ID is string and UUID format
+   * @returns Object of user data
+   */
   async getProfile(id: string) {
-    // Find user
+    // Finds the user by their ID
     const user &#x3D; await this.userRepository.findOneBy({ id });
 
-    // Remove id form user object and return it
+    // Removes the ID from the user object, as it&#x27;s not needed in the profile
     delete user.id;
+
+    // Returns the user&#x27;s profile data
     return user;
   }
 
+  /**
+   * Changes a user&#x27;s password
+   * @param id
+   * @param param1
+   */
   async changePassword(
     id: string,
     { currentPassword, newPassword }: ChangePasswordDto
   ) {
+    // Finds the user by their ID, only retrieving the password
     const user &#x3D; await this.userRepository.findOne({
       where: { id },
       select: [&#x27;password&#x27;]
     });
 
-    // Check valid password
+    // Compares the provided current password with the stored password hash using the HashingService
     const isMatch &#x3D; await this.hashingService.compare(
       currentPassword,
       user.password
     );
 
-    // If invalid password, handle it
+    // Throws an UnauthorizedException if the current password is invalid
     if (!isMatch) throw new UnauthorizedException(&#x27;invalid password&#x27;);
 
-    // If the new password is different from the current password
+    // If the new password is different from the current password, updates the user&#x27;s password in the database
     if (currentPassword !&#x3D;&#x3D; newPassword)
       await this.userRepository.update({ id }, { password: newPassword });
   }
 
+  /**
+   * Validates a user&#x27;s credentials using email or username and password ***
+   * @param email
+   * @param password
+   * @returns Object of user data
+   */
   async validateLocal(email: string, password: string) {
-    // Find user with email or username
+    // Finds the user by their email or username, retrieving specific fields
     const user &#x3D; await this.userRepository.findOne({
       where: [{ email }, { username: email }],
       select: [&#x27;id&#x27;, &#x27;role&#x27;, &#x27;status&#x27;, &#x27;password&#x27;]
     });
 
-    // If doesn&#x27;t exists, handle it
+    // Throws a NotFoundException if the user is not found
     if (!user) throw new NotFoundException(&#x27;User not found&#x27;);
 
-    // Check user status
+    // // Checks if the user&#x27;s account is activated (this part is commented out, but it could be used to implement user account activation)
     // if (user.status !&#x3D;&#x3D; UserStatus.ACTIVATE)
     //   throw new UnauthorizedException(
     //     &#x60;Your account is ${user.status.toLowerCase()} see support for reviewing your account&#x60;
     //   );
 
-    // Check valid password
+    // Compares the provided password with the stored password hash
     const isMatch &#x3D; await this.hashingService.compare(password, user.password);
 
-    // If invalid password, handle it
+    // Throws an UnauthorizedException if the password is invalid
     if (!isMatch) throw new UnauthorizedException(&#x27;invalid password&#x27;);
 
-    // Return user without password
+    // Removes the password from the user object, as it&#x27;s not needed for authentication
     delete user.password;
+
+    // Returns the user information without the password
     return user;
   }
 
+  /**
+   * Validates a JWT token and retrieves the user information ***
+   * @param param0
+   * @param jwtToken
+   * @returns UserId and object of session
+   */
   async validateJwt({ id }: JwtPayload, jwtToken: string) {
-    // Find user with id
+    // Finds the user by their ID
     const user &#x3D; await this.userRepository.findOneBy({ id });
 
-    // If doesn&#x27;t exists, handle it
+    // Throws an UnauthorizedException if the user is not found
     if (!user) throw new UnauthorizedException();
 
-    // Checking that the session has not expired
+    // Validates the JWT token and checks if the session is still active
     const session &#x3D; await this.sessionService.validate(user.id, jwtToken);
 
-    // If it had expired, handle it
+    // Throws an UnauthorizedException if the session is invalid
     if (!session) throw new UnauthorizedException();
 
-    // return userId and session
+    // Creates a CustomUser object containing the user&#x27;s ID and the session information
     const res: CustomUser &#x3D; { id, session };
 
+    // Returns the CustomUser object
     return res;
   }
 }

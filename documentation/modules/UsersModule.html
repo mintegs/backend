@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -196,6 +197,25 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>UsersModule is responsible for managing user-related functionalities within the application.</p>
+<p>It imports necessary modules and provides various components for user management, including:</p>
+<ul>
+<li>TypeOrmModule with User and Session entities to enable database operations for user and session management.</li>
+<li>CommonModule to handle hashing password and compare password with hashingService.</li>
+</ul>
+<p>The module declares:</p>
+<ul>
+<li>UsersController, which defines the routes and handling of user-related HTTP requests.</li>
+<li>UsersService, which contains the business logic for managing users, including CRUD operations and any related processes.</li>
+<li>UsersSubscriber, which listens for relevant database events related to users, allowing for actions to be taken in response to changes.</li>
+</ul>
+<p>Overall, this module encapsulates all functionalities related to user management, ensuring a clean separation of concerns in the application architecture.</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -225,7 +245,7 @@
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../modules/AuthModule.html">AuthModule</a>
+                            <a href="../modules/CommonModule.html">CommonModule</a>
                         </li>
                     </ul>
                 </div>
@@ -239,15 +259,29 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
 import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
-import { AuthModule } from &#x27;auth/auth.module&#x27;;
 import { Session } from &#x27;session/entities/session.entity&#x27;;
 import { User } from &#x27;./entities/user.entity&#x27;;
 import { UsersSubscriber } from &#x27;./subscribers/users.subscriber&#x27;;
 import { UsersController } from &#x27;./users.controller&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
+import { CommonModule } from &#x27;core/common/common.module&#x27;;
 
+/**
+ * UsersModule is responsible for managing user-related functionalities within the application.
+ *
+ * It imports necessary modules and provides various components for user management, including:
+ * - TypeOrmModule with User and Session entities to enable database operations for user and session management.
+ * - CommonModule to handle hashing password and compare password with hashingService.
+ *
+ * The module declares:
+ * - UsersController, which defines the routes and handling of user-related HTTP requests.
+ * - UsersService, which contains the business logic for managing users, including CRUD operations and any related processes.
+ * - UsersSubscriber, which listens for relevant database events related to users, allowing for actions to be taken in response to changes.
+ *
+ * Overall, this module encapsulates all functionalities related to user management, ensuring a clean separation of concerns in the application architecture.
+ */
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Session]), AuthModule],
+  imports: [TypeOrmModule.forFeature([User, Session]), CommonModule],
   controllers: [UsersController],
   providers: [UsersService, UsersSubscriber]
 })

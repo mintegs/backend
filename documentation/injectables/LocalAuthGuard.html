@@ -10,6 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
     </head>
     <body>
           <script>
@@ -119,6 +120,17 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The LocalAuthGuard class extends the AuthGuard from &#39;@nestjs/passport&#39;
+and specifies the &#39;local&#39; strategy for authentication.
+This guard will be used to protect routes that require local authentication,
+ensuring that users are authenticated via the local strategy before accessing
+the corresponding resources.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -139,6 +151,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
 
+/**
+ * The LocalAuthGuard class extends the AuthGuard from &#x27;@nestjs/passport&#x27;
+ * and specifies the &#x27;local&#x27; strategy for authentication.
+ * This guard will be used to protect routes that require local authentication,
+ * ensuring that users are authenticated via the local strategy before accessing
+ * the corresponding resources.
+ */
 @Injectable()
 export class LocalAuthGuard extends AuthGuard(&#x27;local&#x27;) {}
 </code></pre>
