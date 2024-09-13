@@ -1,4 +1,9 @@
-import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  CreateDateColumn,
+  DeleteDateColumn,
+  Index,
+  UpdateDateColumn
+} from 'typeorm';
 
 /**
  * A class representing common date fields for an entity in the database.
@@ -11,6 +16,7 @@ export class RegistryDates {
    * This field is automatically populated by TypeORM upon entity creation.
    */
   @CreateDateColumn()
+  @Index({ unique: true })
   createdAt: Date;
 
   /**

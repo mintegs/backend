@@ -2,7 +2,13 @@ import { RegistryDates } from 'core/common/embedded/registry-dates.embedded';
 import { UserRole } from 'core/common/enums/user-role.enum';
 import { UserStatus } from 'core/common/enums/user-status.enum';
 import { Session } from 'sessions/entities/session.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 
 /**
  * Define the User entity representing a user in the system
@@ -19,18 +25,21 @@ export class User {
    * User's name, optional and not selected by default
    */
   @Column({ length: 50, nullable: true, select: false })
+  @Index()
   name: string;
 
   /**
    * User's email must be unique
    */
   @Column({ unique: true })
+  @Index({ unique: true })
   email: string;
 
   /**
    * Username has a maximum length of 30 and must be unique
    */
   @Column({ unique: true, length: 30 })
+  @Index({ unique: true })
   username: string;
 
   /**

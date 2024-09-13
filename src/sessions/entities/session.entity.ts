@@ -1,5 +1,11 @@
 import { Device } from 'core/common/interfaces/device.interface';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  ManyToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 import { User } from 'users/entities/user.entity';
 
 /**
@@ -10,13 +16,14 @@ export class Session {
   /**
    * Generates a unique UUID for each session
    */
-  @PrimaryGeneratedColumn('uuid') //
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   /**
    * Ensures each token is JWT and unique in the database
    */
   @Column({ unique: true })
+  @Index({ unique: true })
   token: string;
 
   /**
@@ -35,7 +42,8 @@ export class Session {
    * The date and time when the session will expire
    */
   @Column()
-  expiryDate: Date; //
+  @Index()
+  expiryDate: Date;
 
   /**
    * This session must be associated with a user
