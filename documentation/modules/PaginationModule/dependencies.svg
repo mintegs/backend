@@ -21,46 +21,46 @@
 <polygon fill="#fb8072" stroke="transparent" points="406,-10 406,-30 426,-30 426,-10 406,-10"/>
 <text text-anchor="start" x="429.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
 <g id="clust1" class="cluster">
-<title>cluster_CommonModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="172,-70 172,-268 324,-268 324,-70 172,-70"/>
+<title>cluster_PaginationModule</title>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="151,-70 151,-268 345,-268 345,-70 151,-70"/>
 </g>
 <g id="clust4" class="cluster">
-<title>cluster_CommonModule_exports</title>
-<polygon fill="none" stroke="black" points="186,-208 186,-260 310,-260 310,-208 186,-208"/>
+<title>cluster_PaginationModule_exports</title>
+<polygon fill="none" stroke="black" points="179,-208 179,-260 317,-260 317,-208 179,-208"/>
 </g>
-<g id="clust3" class="cluster">
-<title>cluster_CommonModule_imports</title>
-<polygon fill="none" stroke="black" points="180,-78 180,-130 316,-130 316,-78 180,-78"/>
+<g id="clust6" class="cluster">
+<title>cluster_PaginationModule_providers</title>
+<polygon fill="none" stroke="black" points="159,-78 159,-130 337,-130 337,-78 159,-78"/>
+</g>
+<!-- PaginationService  -->
+<g id="node1" class="node">
+<title>PaginationService </title>
+<polygon fill="#fb8072" stroke="black" points="308.86,-252 187.14,-252 187.14,-216 308.86,-216 308.86,-252"/>
+<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00">PaginationService </text>
 </g>
 <!-- PaginationModule -->
-<g id="node1" class="node">
-<title>PaginationModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="307.93,-122 304.93,-126 283.93,-126 280.93,-122 188.07,-122 188.07,-86 307.93,-86 307.93,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00">PaginationModule</text>
-</g>
-<!-- CommonModule -->
 <g id="node2" class="node">
-<title>CommonModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="303.67,-187 300.67,-191 279.67,-191 276.67,-187 192.33,-187 192.33,-151 303.67,-151 303.67,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00">CommonModule</text>
+<title>PaginationModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="307.93,-187 304.93,-191 283.93,-191 280.93,-187 188.07,-187 188.07,-151 307.93,-151 307.93,-187"/>
+<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00">PaginationModule</text>
 </g>
-<!-- PaginationModule&#45;&gt;CommonModule -->
+<!-- PaginationModule&#45;&gt;PaginationService  -->
 <g id="edge1" class="edge">
-<title>PaginationModule&#45;&gt;CommonModule</title>
-<path fill="none" stroke="black" d="M248,-122.11C248,-122.11 248,-140.99 248,-140.99"/>
-<polygon fill="black" stroke="black" points="244.5,-140.99 248,-150.99 251.5,-140.99 244.5,-140.99"/>
-</g>
-<!-- HashingService  -->
-<g id="node3" class="node">
-<title>HashingService </title>
-<polygon fill="#fb8072" stroke="black" points="302.13,-252 193.87,-252 193.87,-216 302.13,-216 302.13,-252"/>
-<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00">HashingService </text>
-</g>
-<!-- CommonModule&#45;&gt;HashingService  -->
-<g id="edge2" class="edge">
-<title>CommonModule&#45;&gt;HashingService </title>
+<title>PaginationModule&#45;&gt;PaginationService </title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M248,-187.11C248,-187.11 248,-205.99 248,-205.99"/>
 <polygon fill="black" stroke="black" points="244.5,-205.99 248,-215.99 251.5,-205.99 244.5,-205.99"/>
+</g>
+<!-- PaginationService -->
+<g id="node3" class="node">
+<title>PaginationService</title>
+<ellipse fill="#fdb462" stroke="black" cx="248" cy="-104" rx="81.1" ry="18"/>
+<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00">PaginationService</text>
+</g>
+<!-- PaginationService&#45;&gt;PaginationModule -->
+<g id="edge2" class="edge">
+<title>PaginationService&#45;&gt;PaginationModule</title>
+<path fill="none" stroke="black" d="M248,-122.11C248,-122.11 248,-140.99 248,-140.99"/>
+<polygon fill="black" stroke="black" points="244.5,-140.99 248,-150.99 251.5,-140.99 244.5,-140.99"/>
 </g>
 </g>
 </svg>

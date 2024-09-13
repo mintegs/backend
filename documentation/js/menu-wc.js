@@ -114,6 +114,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/EnvModule.html" data-type="entity-link" >EnvModule</a>
                             </li>
                             <li class="link">
+                                <a href="modules/PaginationModule.html" data-type="entity-link" >PaginationModule</a>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                        'data-bs-target="#injectables-links-module-PaginationModule-f920d7c583cb31c9fa2d33aebc1b5152ce4d4cd6beb7d5924c1021076663b987e41169b432c26b5f3a972d340c1c6258839b227a67e0f52d4e63f2c684bfafb2"' : 'data-bs-target="#xs-injectables-links-module-PaginationModule-f920d7c583cb31c9fa2d33aebc1b5152ce4d4cd6beb7d5924c1021076663b987e41169b432c26b5f3a972d340c1c6258839b227a67e0f52d4e63f2c684bfafb2"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-PaginationModule-f920d7c583cb31c9fa2d33aebc1b5152ce4d4cd6beb7d5924c1021076663b987e41169b432c26b5f3a972d340c1c6258839b227a67e0f52d4e63f2c684bfafb2"' :
+                                        'id="xs-injectables-links-module-PaginationModule-f920d7c583cb31c9fa2d33aebc1b5152ce4d4cd6beb7d5924c1021076663b987e41169b432c26b5f3a972d340c1c6258839b227a67e0f52d4e63f2c684bfafb2"' }>
+                                        <li class="link">
+                                            <a href="injectables/PaginationService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PaginationService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SessionsModule.html" data-type="entity-link" >SessionsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
@@ -214,6 +231,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/LoginUserDto.html" data-type="entity-link" >LoginUserDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/PaginationQueryDto.html" data-type="entity-link" >PaginationQueryDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/RegisterUserDto.html" data-type="entity-link" >RegisterUserDto</a>
                             </li>
                             <li class="link">
@@ -277,6 +297,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/JwtPayload.html" data-type="entity-link" >JwtPayload</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Paginated.html" data-type="entity-link" >Paginated</a>
                             </li>
                         </ul>
                     </li>
