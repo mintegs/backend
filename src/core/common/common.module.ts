@@ -3,6 +3,7 @@ import { APP_PIPE } from '@nestjs/core';
 import { VALIDATION_PIPE_OPTIONS } from './util/common.constants';
 import { HashingService } from './hashing/hashing.service';
 import { BcryptService } from './hashing/bcrypt.service';
+import { PaginationModule } from './pagination/pagination.module';
 
 /**
  * Define a module called CommonModule
@@ -22,6 +23,7 @@ import { BcryptService } from './hashing/bcrypt.service';
     }
   ],
   // Export the HashingService for use in other modules
-  exports: [HashingService]
+  exports: [HashingService],
+  imports: [PaginationModule]
 })
 export class CommonModule {}
