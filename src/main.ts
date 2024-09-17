@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import * as compression from 'compression';
 
 /**
  * The bootstrap function is an asynchronous function that initializes and starts the application.
@@ -8,6 +9,15 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   // Create an instance of the Nest application using the specified AppModule.
   const app = await NestFactory.create(AppModule);
+
+  // Apply global compression middleware
+  app.use(
+    compression({
+      level: 6, // Compression level (0-9)
+      filter: (req) => req.headers['accept-encoding']?.includes('gzip'), // Only compress certain content types or based on other criteria
+      threshold: 1024 // Compress responses larger than 1KB
+    })
+  );
 
   // Setup swagger for API documentation and configuration
   const config = new DocumentBuilder()
