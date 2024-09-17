@@ -1,11 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PaginationQueryDto } from './dto/pagination-query.dto';
 import {
-  FindOptionsRelations,
-  FindOptionsSelect,
-  FindOptionsWhere,
+  Repository,
   ObjectLiteral,
-  Repository
+  FindOptionsWhere,
+  FindOptionsRelations
 } from 'typeorm';
 import { Request } from 'express';
 import { REQUEST } from '@nestjs/core';
@@ -15,54 +14,75 @@ import { Paginated } from './interfaces/paginated.interface';
 export class PaginationService {
   constructor(
     @Inject(REQUEST)
-    private readonly request: Request
+    private readonly request: Request // Injecting request to access request-related information
   ) {}
 
+  /**
+   * A lightweight and faster method to paginate query results.
+   * Optimized for minimal response overhead.
+   *
+   * @param paginationQuery Pagination options like `page` and `limit`
+   * @param repository The repository to query
+   * @param where Optional filtering conditions for the query
+   * @param relations Optional relations to be included in the query
+   * @param select Optional fields to select in the query
+   * @returns Paginated response with minimal metadata for faster performance
+   */
   async paginateQuery<T extends ObjectLiteral>(
     paginationQuery: PaginationQueryDto,
     repository: Repository<T>,
-    where?: FindOptionsWhere<T>[] | FindOptionsWhere<T>,
-    select?: FindOptionsSelect<T>,
-    relations?: FindOptionsRelations<T>
+    where?: FindOptionsWhere<T> | FindOptionsWhere<T>[],
+    relations?: FindOptionsRelations<T>,
+    select?: (keyof T)[]
   ): Promise<Paginated<T>> {
-    const results = await repository.find({
-      where,
-      select,
-      relations,
-      skip: (paginationQuery.page - 1) * paginationQuery.limit,
-      take: paginationQuery.limit
-    });
+    // Set default values for `page` and `limit` if not provided
+    const page = paginationQuery.page || 1;
+    const limit = paginationQuery.limit || 10;
+    const skip = (page - 1) * limit;
 
-    const baseURL = `${this.request.protocol}://${this.request.headers.host}/`;
-    const newUrl = new URL(this.request.url, baseURL);
+    // Create a query builder for more control over the query
+    const queryBuilder = repository.createQueryBuilder('entity');
 
-    const totalItems = await repository.count();
-    const totalPages = Math.ceil(totalItems / paginationQuery.limit);
-    const nextPage =
-      paginationQuery.page === totalPages
-        ? paginationQuery.page
-        : paginationQuery.page + 1;
-    const previousPage =
-      paginationQuery.page === 1
-        ? paginationQuery.page
-        : paginationQuery.page - 1;
+    // Apply filters and relations
+    if (where) {
+      queryBuilder.where(where);
+    }
+    if (relations) {
+      for (const relation of Object.keys(relations)) {
+        queryBuilder.leftJoinAndSelect(`entity.${relation}`, relation);
+      }
+    }
 
+    // Apply selected fields if provided
+    if (select) {
+      // Ensure all fields are strings
+      const stringFields = select.map((field) => String(field));
+      queryBuilder.select([
+        'entity.id',
+        ...stringFields.map((field) => `entity.${field}`)
+      ]);
+    }
+
+    // Execute the query with pagination
+    const [results, totalItems] = await Promise.all([
+      queryBuilder.skip(skip).take(limit).getMany(),
+      queryBuilder.getCount()
+    ]);
+
+    // Calculate total pages and minimal metadata
+    const totalPages = Math.ceil(totalItems / limit);
+
+    // Build the minimal response without unnecessary pagination links
     const response: Paginated<T> = {
       data: results,
       meta: {
-        itemsPerPages: paginationQuery.limit,
+        itemsPerPages: limit,
         totalItems,
-        currentPage: paginationQuery.page,
+        currentPage: page,
         totalPages
-      },
-      links: {
-        first: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=1`,
-        last: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${totalPages}`,
-        current: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${paginationQuery.page}`,
-        next: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${nextPage}`,
-        previous: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${previousPage}`
       }
     };
+
     return response;
   }
 }
