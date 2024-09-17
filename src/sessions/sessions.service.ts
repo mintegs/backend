@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CustomUser } from 'core/common/interfaces/custom-request.interface';
 import { Device } from 'core/common/interfaces/device.interface';
 import { Session } from 'sessions/entities/session.entity';
-import { DataSource, Raw, Repository } from 'typeorm';
+import { MoreThan, Repository } from 'typeorm';
 import { User } from 'users/entities/user.entity';
 
 /**
@@ -14,13 +14,7 @@ import { User } from 'users/entities/user.entity';
  */
 @Injectable()
 export class SessionsService {
-  /**
-   * @param dataSource DataSource instance for accessing the database
-   * @param sessionRepository The Session repository for CRUD operations on Session entities
-   * @param userRepository The User repository to access User entities
-   */
   constructor(
-    private readonly dataSource: DataSource,
     @InjectRepository(Session)
     private readonly sessionRepository: Repository<Session>,
     @InjectRepository(User)
@@ -29,70 +23,61 @@ export class SessionsService {
 
   /**
    * Creates a new session for a specified user
-   * @param userId
-   * @param token
-   * @param ip
-   * @param device
-   * @returns New session
+   * @param userId - The ID of the user
+   * @param token - The session token
+   * @param ip - The IP address of the user
+   * @param device - Information about the user's device
+   * @returns The newly created session
    */
-  async create(userId: string, token: string, ip: string, device: Device) {
-    /**
-     * Creates a new session instance with the provided user ID, token, IP address, device information,
-     * and sets the expiry date to 31 days from now
-     */
+  async create(
+    userId: string,
+    token: string,
+    ip: string,
+    device: Device
+  ): Promise<Session> {
+    // Create a new session instance with an expiry date set to 31 days from now
     const session = this.sessionRepository.create({
-      owner: {
-        id: userId
-      },
+      owner: { id: userId },
       ip,
       token,
       device,
-      expiryDate: new Date(new Date().setMilliseconds(31 * 24 * 60 * 60 * 1000))
+      expiryDate: new Date(Date.now() + 31 * 24 * 60 * 60 * 1000) // 31 days from now
     });
 
-    // Saves the newly created session to the database and returns it.
-    return await this.sessionRepository.save(session);
+    // Save the newly created session to the database and return it
+    return this.sessionRepository.save(session);
   }
 
   /**
    * Validates a session based on the user ID and token.
-   * @param userId
-   * @param token
-   * @returns Object of session
+   * @param userId - The ID of the user
+   * @param token - The session token
+   * @returns The session if valid, or null if not found or expired
    */
-  async validate(userId: string, token: string): Promise<Session> {
-    /**
-     * Finds a session that matches the user ID and token,
-     * and checks if the session has not expired by comparing the expiry date with the current date.
-     */
-    const session = await this.dataSource.getRepository(Session).findOne({
+  async validate(userId: string, token: string): Promise<Session | null> {
+    // Find a session matching the user ID and token, ensuring it has not expired
+    return this.sessionRepository.findOne({
       where: {
         token,
-        owner: {
-          id: userId
-        },
-        // Ensures the expiry date is in the future.
-        expiryDate: Raw((alias) => `${alias} > NOW()`)
+        owner: { id: userId },
+        expiryDate: MoreThan(new Date()) // Ensure the expiry date is in the future
       }
     });
-
-    // Returns the found session or null if not found or expired.
-    return session;
   }
 
   /**
-   * Retrieves sessions for a given user****
-   * @param param0
-   * @returns Session lists
+   * Retrieves all sessions for a given user.
+   * @param user - The user whose sessions are to be retrieved
+   * @returns A list of sessions for the user
    */
-  async sessions({ id }: CustomUser) {
-    /**
-     * Fetches a user by ID along with their related sessions
-     */
-    await this.userRepository.findOne({
+  async getSessions({ id }: CustomUser): Promise<Session[]> {
+    // Fetch the user by ID and include their related sessions
+    const user = await this.userRepository.findOne({
       where: { id },
-      // Specifies that related sessions should be fetched.
-      relations: ['session']
+      relations: ['sessions'] // Fetch related sessions
     });
+
+    // Return the user's sessions or an empty array if no sessions are found
+    return user?.sessions ?? [];
   }
 }
