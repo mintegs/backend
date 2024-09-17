@@ -153,8 +153,7 @@ export class UsersService {
     if (!isMatch) throw new UnauthorizedException('invalid password');
 
     // If the new password is different from the current password, updates the user's password in the database
-    if (currentPassword !== newPassword)
-      await this.userRepository.update({ id }, { password: newPassword });
+    await this.userRepository.update(id, { password: newPassword });
   }
 
   /**

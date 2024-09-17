@@ -1,6 +1,5 @@
 import { HashingService } from 'core/common/hashing/hashing.service';
 import {
-  DataSource,
   EntitySubscriberInterface,
   EventSubscriber,
   InsertEvent,
@@ -14,20 +13,13 @@ import { User } from 'users/entities/user.entity';
 @EventSubscriber()
 export class UsersSubscriber implements EntitySubscriberInterface<User> {
   /**
-   * Constructor to initialize the data source and hashing service
-   * @param dataSource
+   * Constructor to initialize the hashing service
    * @param hashingService
    */
   constructor(
-    // Injecting DataSource for database operations
-    private readonly dataSource: DataSource,
-
     // Injecting HashingService for password hashing
     private readonly hashingService: HashingService
-  ) {
-    // Register the subscriber with the data source, allowing it to listen to events
-    dataSource.subscribers.push(this);
-  }
+  ) {}
 
   /**
    * This method specifies the entity that this subscriber listens to
@@ -47,7 +39,9 @@ export class UsersSubscriber implements EntitySubscriberInterface<User> {
     const { entity: user } = event;
 
     // Hash the user's password before inserting it into the database
-    user.password = await this.hashingService.hash(user.password);
+    if (user.password) {
+      user.password = await this.hashingService.hash(user.password);
+    }
   }
 
   /**
@@ -56,12 +50,18 @@ export class UsersSubscriber implements EntitySubscriberInterface<User> {
    */
   async beforeUpdate(event: UpdateEvent<User>) {
     // Destructure the entity from the event
-    const { entity } = event;
+    const { entity, databaseEntity } = event;
 
-    // Explicitly cast the entity to User type
-    const user = entity as User;
+    if (entity.password) {
+      // Check if the new plain text password differs from the existing hashed password
+      const passwordMatches = await this.hashingService.compare(
+        entity.password,
+        databaseEntity.password
+      );
 
-    // Hash the user's password before updating it in the database
-    user.password = await this.hashingService.hash(user.password);
+      if (!passwordMatches)
+        // Hash the new password before updating it in the database
+        entity.password = await this.hashingService.hash(entity.password);
+    }
   }
 }
