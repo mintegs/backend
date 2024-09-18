@@ -145,6 +145,7 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#expiryDate" >expiryDate</a>
                             </li>
                             <li>
@@ -160,6 +161,7 @@
                                 <a href="#owner" >owner</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#token" >token</a>
                             </li>
@@ -210,7 +212,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/sessions/entities/session.entity.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/sessions/entities/session.entity.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -230,6 +232,7 @@
                     <a name="expiryDate"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>expiryDate</b></span>
                         <a href="#expiryDate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -246,13 +249,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column()<br />
+                            @Column()<br />@Index()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/sessions/entities/session.entity.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/sessions/entities/session.entity.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -294,7 +297,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/sessions/entities/session.entity.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/sessions/entities/session.entity.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -336,7 +339,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/sessions/entities/session.entity.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/sessions/entities/session.entity.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -378,7 +381,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/sessions/entities/session.entity.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/sessions/entities/session.entity.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -399,6 +402,7 @@ The user who owns this session</p>
                     <a name="token"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>token</b></span>
                         <a href="#token"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -415,13 +419,13 @@ The user who owns this session</p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({unique: true})<br />
+                            @Column({unique: true})<br />@Index({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/sessions/entities/session.entity.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/sessions/entities/session.entity.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -440,7 +444,13 @@ The user who owns this session</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from &#x27;typeorm&#x27;;
+import {
+  Column,
+  Entity,
+  Index,
+  ManyToOne,
+  PrimaryGeneratedColumn
+} from &#x27;typeorm&#x27;;
 import { User } from &#x27;users/entities/user.entity&#x27;;
 
 /**
@@ -451,13 +461,14 @@ export class Session {
   /**
    * Generates a unique UUID for each session
    */
-  @PrimaryGeneratedColumn(&#x27;uuid&#x27;) //
+  @PrimaryGeneratedColumn(&#x27;uuid&#x27;)
   id: string;
 
   /**
    * Ensures each token is JWT and unique in the database
    */
   @Column({ unique: true })
+  @Index({ unique: true })
   token: string;
 
   /**
@@ -476,7 +487,8 @@ export class Session {
    * The date and time when the session will expire
    */
   @Column()
-  expiryDate: Date; //
+  @Index()
+  expiryDate: Date;
 
   /**
    * This session must be associated with a user

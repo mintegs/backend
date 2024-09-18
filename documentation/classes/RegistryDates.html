@@ -151,6 +151,7 @@ the creation, update, and deletion dates of the entity.</p>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#createdAt" >createdAt</a>
                             </li>
                             <li>
@@ -187,6 +188,7 @@ the creation, update, and deletion dates of the entity.</p>
                     <a name="createdAt"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>createdAt</b></span>
                         <a href="#createdAt"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -203,13 +205,13 @@ the creation, update, and deletion dates of the entity.</p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @CreateDateColumn()<br />
+                            @CreateDateColumn()<br />@Index({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -252,7 +254,7 @@ This field is automatically populated by TypeORM upon entity creation.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -296,7 +298,7 @@ allowing for soft deletion functionality without removing the record from the da
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/core/common/embedded/registry-dates.embedded.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -322,7 +324,12 @@ This field is automatically updated by TypeORM whenever the entity is modified.<
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from &#x27;typeorm&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  CreateDateColumn,
+  DeleteDateColumn,
+  Index,
+  UpdateDateColumn
+} from &#x27;typeorm&#x27;;
 
 /**
  * A class representing common date fields for an entity in the database.
@@ -335,6 +342,7 @@ export class RegistryDates {
    * This field is automatically populated by TypeORM upon entity creation.
    */
   @CreateDateColumn()
+  @Index({ unique: true })
   createdAt: Date;
 
   /**

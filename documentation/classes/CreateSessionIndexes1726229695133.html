@@ -96,7 +96,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >UsersSubscriber</li>
+  <li class="breadcrumb-item" >CreateSessionIndexes1726229695133</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -120,24 +120,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/users/subscribers/users.subscriber.ts</code>
+            <code>src/core/database/migrations/1726229695133-create-session-indexes.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Decorator that marks the class as a subscriber for entity events</p>
-
-            </p>
 
 
             <p class="comment">
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code>EntitySubscriberInterface</code>
+                        <code>MigrationInterface</code>
             </p>
 
 
@@ -145,6 +138,20 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#name" >name</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -155,15 +162,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#beforeInsert" >beforeInsert</a>
+                                <a href="#down" >down</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#beforeUpdate" >beforeUpdate</a>
-                            </li>
-                            <li>
-                                <a href="#listenTo" >listenTo</a>
+                                <a href="#up" >up</a>
                             </li>
                         </ul>
                     </td>
@@ -177,57 +183,44 @@
     </table>
 </section>
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(hashingProvider: <a href="../injectables/HashingProvider.html" target="_self">HashingProvider</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/users/subscribers/users.subscriber.ts:14</a></div>
-                            </td>
-                        </tr>
 
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="name"></a>
+                    <span class="name">
+                        <span ><b>name</b></span>
+                        <a href="#name"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Constructor to initialize the hashing provider</p>
-</div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>hashingProvider</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/HashingProvider.html" target="_self" >HashingProvider</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;CreateSessionIndexes1726229695133&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/core/database/migrations/1726229695133-create-session-indexes.ts:4</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
 </section>
-
 
             <section data-compodoc="block-methods">
     
@@ -238,34 +231,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="beforeInsert"></a>
+                    <a name="down"></a>
                     <span class="name">
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                        <span ><b>beforeInsert</b></span>
-                        <a href="#beforeInsert"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>down</b></span>
+                        <a href="#down"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>beforeInsert(event: <a href="../entitys/User.html" target="_self">InsertEvent&lt;User&gt;</a>)</code>
+                    <code>down(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/users/subscribers/users.subscriber.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/core/database/migrations/1726229695133-create-session-indexes.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Method to handle actions before a user entity is inserted into the database</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -280,9 +272,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>event</td>
+                                                <td>queryRunner</td>
                                             <td>
-                                                            <code><a href="../entitys/User.html" target="_self" >InsertEvent&lt;User&gt;</a></code>
+                                                        <code>QueryRunner</code>
                                             </td>
 
                                             <td>
@@ -295,7 +287,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -309,34 +301,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="beforeUpdate"></a>
+                    <a name="up"></a>
                     <span class="name">
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                        <span ><b>beforeUpdate</b></span>
-                        <a href="#beforeUpdate"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>up</b></span>
+                        <a href="#up"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>beforeUpdate(event: <a href="../entitys/User.html" target="_self">UpdateEvent&lt;User&gt;</a>)</code>
+                    <code>up(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/users/subscribers/users.subscriber.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="6"
+                                    class="link-to-prism">src/core/database/migrations/1726229695133-create-session-indexes.ts:6</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Method to handle actions before a user entity is updated in the database</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -351,9 +342,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>event</td>
+                                                <td>queryRunner</td>
                                             <td>
-                                                            <code><a href="../entitys/User.html" target="_self" >UpdateEvent&lt;User&gt;</a></code>
+                                                        <code>QueryRunner</code>
                                             </td>
 
                                             <td>
@@ -366,54 +357,11 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                         </div>
                             <div class="io-description">
                                 
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="listenTo"></a>
-                    <span class="name">
-                        <span ><b>listenTo</b></span>
-                        <a href="#listenTo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>listenTo()</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/users/subscribers/users.subscriber.ts:28</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>This method specifies the entity that this subscriber listens to</p>
-</div>
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>User entity</p>
-
                             </div>
                 </td>
             </tr>
@@ -429,71 +377,97 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HashingProvider } from &#x27;core/common/providers/hashing.provider&#x27;;
-import {
-  EntitySubscriberInterface,
-  EventSubscriber,
-  InsertEvent,
-  UpdateEvent
-} from &#x27;typeorm&#x27;;
-import { User } from &#x27;users/entities/user.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
 
-/**
- * Decorator that marks the class as a subscriber for entity events
- */
-@EventSubscriber()
-export class UsersSubscriber implements EntitySubscriberInterface&lt;User&gt; {
-  /**
-   * Constructor to initialize the hashing provider
-   * @param hashingProvider
-   */
-  constructor(
-    // Injecting HashingProvider for password hashing
-    private readonly hashingProvider: HashingProvider
-  ) {}
+export class CreateSessionIndexes1726229695133 implements MigrationInterface {
+  name &#x3D; &#x27;CreateSessionIndexes1726229695133&#x27;;
 
-  /**
-   * This method specifies the entity that this subscriber listens to
-   * @returns User entity
-   */
-  listenTo() {
-    // Listen to User entity events
-    return User;
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(&#x60;
+            ALTER TYPE &quot;public&quot;.&quot;user_role_enum&quot;
+            RENAME TO &quot;user_role_enum_old&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE TYPE &quot;public&quot;.&quot;user_role_enum&quot; AS ENUM(&#x27;ADMIN&#x27;, &#x27;AUTHOR&#x27;, &#x27;USER&#x27;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TABLE &quot;user&quot;
+            ALTER COLUMN &quot;role&quot; DROP DEFAULT
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TABLE &quot;user&quot;
+            ALTER COLUMN &quot;role&quot; TYPE &quot;public&quot;.&quot;user_role_enum&quot; USING &quot;role&quot;::&quot;text&quot;::&quot;public&quot;.&quot;user_role_enum&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TABLE &quot;user&quot;
+            ALTER COLUMN &quot;role&quot;
+            SET DEFAULT &#x27;USER&#x27;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP TYPE &quot;public&quot;.&quot;user_role_enum_old&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE UNIQUE INDEX &quot;IDX_232f8e85d7633bd6ddfad42169&quot; ON &quot;session&quot; (&quot;token&quot;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE INDEX &quot;IDX_d051e3dbf62fe9574dee6570ce&quot; ON &quot;session&quot; (&quot;expiryDate&quot;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE INDEX &quot;IDX_065d4d8f3b5adb4a08841eae3c&quot; ON &quot;user&quot; (&quot;name&quot;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE UNIQUE INDEX &quot;IDX_e12875dfb3b1d92d7d7c5377e2&quot; ON &quot;user&quot; (&quot;email&quot;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE UNIQUE INDEX &quot;IDX_78a916df40e02a9deb1c4b75ed&quot; ON &quot;user&quot; (&quot;username&quot;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE UNIQUE INDEX &quot;IDX_e11e649824a45d8ed01d597fd9&quot; ON &quot;user&quot; (&quot;createdAt&quot;)
+        &#x60;);
   }
 
-  /**
-   * Method to handle actions before a user entity is inserted into the database
-   * @param event
-   */
-  async beforeInsert(event: InsertEvent&lt;User&gt;) {
-    // Destructure user entity from the event
-    const { entity: user } &#x3D; event;
-
-    // Hash the user&#x27;s password before inserting it into the database
-    if (user.password) {
-      user.password &#x3D; await this.hashingProvider.hash(user.password);
-    }
-  }
-
-  /**
-   * Method to handle actions before a user entity is updated in the database
-   * @param event
-   */
-  async beforeUpdate(event: UpdateEvent&lt;User&gt;) {
-    // Destructure the entity from the event
-    const { entity, databaseEntity } &#x3D; event;
-
-    if (entity.password) {
-      // Check if the new plain text password differs from the existing hashed password
-      const passwordMatches &#x3D; await this.hashingProvider.compare(
-        entity.password,
-        databaseEntity.password
-      );
-
-      if (!passwordMatches)
-        // Hash the new password before updating it in the database
-        entity.password &#x3D; await this.hashingProvider.hash(entity.password);
-    }
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(&#x60;
+            DROP INDEX &quot;public&quot;.&quot;IDX_e11e649824a45d8ed01d597fd9&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP INDEX &quot;public&quot;.&quot;IDX_78a916df40e02a9deb1c4b75ed&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP INDEX &quot;public&quot;.&quot;IDX_e12875dfb3b1d92d7d7c5377e2&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP INDEX &quot;public&quot;.&quot;IDX_065d4d8f3b5adb4a08841eae3c&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP INDEX &quot;public&quot;.&quot;IDX_d051e3dbf62fe9574dee6570ce&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP INDEX &quot;public&quot;.&quot;IDX_232f8e85d7633bd6ddfad42169&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            CREATE TYPE &quot;public&quot;.&quot;user_role_enum_old&quot; AS ENUM(&#x27;ADMIN&#x27;, &#x27;USER&#x27;)
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TABLE &quot;user&quot;
+            ALTER COLUMN &quot;role&quot; DROP DEFAULT
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TABLE &quot;user&quot;
+            ALTER COLUMN &quot;role&quot; TYPE &quot;public&quot;.&quot;user_role_enum_old&quot; USING &quot;role&quot;::&quot;text&quot;::&quot;public&quot;.&quot;user_role_enum_old&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TABLE &quot;user&quot;
+            ALTER COLUMN &quot;role&quot;
+            SET DEFAULT &#x27;USER&#x27;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            DROP TYPE &quot;public&quot;.&quot;user_role_enum&quot;
+        &#x60;);
+    await queryRunner.query(&#x60;
+            ALTER TYPE &quot;public&quot;.&quot;user_role_enum_old&quot;
+            RENAME TO &quot;user_role_enum&quot;
+        &#x60;);
   }
 }
 </code></pre>
@@ -534,7 +508,7 @@ export class UsersSubscriber implements EntitySubscriberInterface&lt;User&gt; {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UsersSubscriber.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CreateSessionIndexes1726229695133.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

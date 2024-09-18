@@ -141,6 +141,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#email" >email</a>
                             </li>
                             <li>
@@ -148,6 +149,7 @@
                                 <a href="#id" >id</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#name" >name</a>
                             </li>
@@ -172,6 +174,7 @@
                                 <a href="#status" >status</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#username" >username</a>
                             </li>
@@ -200,6 +203,7 @@
                     <a name="email"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>email</b></span>
                         <a href="#email"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -216,13 +220,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({unique: true})<br />
+                            @Column({unique: true})<br />@Index({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/users/entities/user.entity.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/users/entities/user.entity.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -264,7 +268,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/users/entities/user.entity.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/users/entities/user.entity.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -284,6 +288,7 @@
                     <a name="name"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>name</b></span>
                         <a href="#name"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -300,13 +305,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({length: 50, nullable: true, select: false})<br />
+                            @Column({length: 50, nullable: true, select: false})<br />@Index()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/users/entities/user.entity.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/users/entities/user.entity.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -348,7 +353,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/users/entities/user.entity.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/users/entities/user.entity.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -390,7 +395,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/users/entities/user.entity.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/users/entities/user.entity.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -432,7 +437,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/users/entities/user.entity.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/users/entities/user.entity.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -474,7 +479,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/users/entities/user.entity.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/users/entities/user.entity.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -516,7 +521,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/users/entities/user.entity.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/users/entities/user.entity.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -536,6 +541,7 @@
                     <a name="username"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>username</b></span>
                         <a href="#username"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -552,13 +558,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({unique: true, length: 30})<br />
+                            @Column({unique: true, length: 30})<br />@Index({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/users/entities/user.entity.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/users/entities/user.entity.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -580,7 +586,13 @@
 import { UserRole } from &#x27;core/common/enums/user-role.enum&#x27;;
 import { UserStatus } from &#x27;core/common/enums/user-status.enum&#x27;;
 import { Session } from &#x27;sessions/entities/session.entity&#x27;;
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from &#x27;typeorm&#x27;;
+import {
+  Column,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from &#x27;typeorm&#x27;;
 
 /**
  * Define the User entity representing a user in the system
@@ -597,18 +609,21 @@ export class User {
    * User&#x27;s name, optional and not selected by default
    */
   @Column({ length: 50, nullable: true, select: false })
+  @Index()
   name: string;
 
   /**
    * User&#x27;s email must be unique
    */
   @Column({ unique: true })
+  @Index({ unique: true })
   email: string;
 
   /**
    * Username has a maximum length of 30 and must be unique
    */
   @Column({ unique: true, length: 30 })
+  @Index({ unique: true })
   username: string;
 
   /**

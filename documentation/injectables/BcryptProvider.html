@@ -80,7 +80,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -90,13 +90,9 @@
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Classes</li>
-  <li class="breadcrumb-item" >UsersSubscriber</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >BcryptProvider</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -120,7 +116,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/users/subscribers/users.subscriber.ts</code>
+            <code>src/core/common/providers/bcrypt.provider.ts</code>
         </p>
 
 
@@ -128,17 +124,11 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Decorator that marks the class as a subscriber for entity events</p>
+                <p>BcryptService is a class responsible for hashing and comparing passwords using the bcrypt algorithm.
+The Injectable decorator allows NestJS to manage the lifecycle of the service.</p>
 
             </p>
 
-
-            <p class="comment">
-                <h3>Implements</h3>
-            </p>
-            <p class="comment">
-                        <code>EntitySubscriberInterface</code>
-            </p>
 
 
             <section data-compodoc="block-index">
@@ -155,15 +145,11 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#beforeInsert" >beforeInsert</a>
+                                <a href="#compare" >compare</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#beforeUpdate" >beforeUpdate</a>
-                            </li>
-                            <li>
-                                <a href="#listenTo" >listenTo</a>
+                                <a href="#hash" >hash</a>
                             </li>
                         </ul>
                     </td>
@@ -177,57 +163,6 @@
     </table>
 </section>
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(hashingProvider: <a href="../injectables/HashingProvider.html" target="_self">HashingProvider</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/users/subscribers/users.subscriber.ts:14</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Constructor to initialize the hashing provider</p>
-</div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>hashingProvider</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/HashingProvider.html" target="_self" >HashingProvider</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
 
             <section data-compodoc="block-methods">
     
@@ -238,33 +173,32 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="beforeInsert"></a>
+                    <a name="compare"></a>
                     <span class="name">
-                            <span class="modifier">Async</span>
-                        <span ><b>beforeInsert</b></span>
-                        <a href="#beforeInsert"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>compare</b></span>
+                        <a href="#compare"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>beforeInsert(event: <a href="../entitys/User.html" target="_self">InsertEvent&lt;User&gt;</a>)</code>
+<code>compare(data: string | Buffer, encrypted: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/users/subscribers/users.subscriber.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/core/common/providers/bcrypt.provider.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Method to handle actions before a user entity is inserted into the database</p>
+                        <div class="io-description"><p>Method to compare a plain text data with an encrypted hash.
+Returns a boolean indicating whether the data matches the encrypted hash.</p>
 </div>
 
                             <div class="io-description">
@@ -280,9 +214,21 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>event</td>
+                                                <td>data</td>
                                             <td>
-                                                            <code><a href="../entitys/User.html" target="_self" >InsertEvent&lt;User&gt;</a></code>
+                                                        <code>string | Buffer</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>encrypted</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -299,7 +245,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>boolean</p>
+
                             </div>
                 </td>
             </tr>
@@ -309,33 +256,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="beforeUpdate"></a>
+                    <a name="hash"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>beforeUpdate</b></span>
-                        <a href="#beforeUpdate"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>hash</b></span>
+                        <a href="#hash"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>beforeUpdate(event: <a href="../entitys/User.html" target="_self">UpdateEvent&lt;User&gt;</a>)</code>
+                    <code>hash(data: string | Buffer, roundsSalt: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/users/subscribers/users.subscriber.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/core/common/providers/bcrypt.provider.ts:17</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Method to handle actions before a user entity is updated in the database</p>
+                        <div class="io-description"><p>Method to hash a given data (string or Buffer) with a specified number of salt rounds (default is 10).</p>
 </div>
 
                             <div class="io-description">
@@ -347,72 +294,48 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Default value</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>event</td>
+                                                <td>data</td>
                                             <td>
-                                                            <code><a href="../entitys/User.html" target="_self" >UpdateEvent&lt;User&gt;</a></code>
+                                                        <code>string | Buffer</code>
                                             </td>
 
                                             <td>
                                                     No
                                             </td>
 
+                                            <td>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                                <td>roundsSalt</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>10</code>
+                                            </td>
 
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="listenTo"></a>
-                    <span class="name">
-                        <span ><b>listenTo</b></span>
-                        <a href="#listenTo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>listenTo()</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/users/subscribers/users.subscriber.ts:28</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>This method specifies the entity that this subscriber listens to</p>
-</div>
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>User entity</p>
+                                <p>stringHash</p>
 
                             </div>
                 </td>
@@ -421,84 +344,53 @@
     </table>
 </section>
 
-
-
-
-
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HashingProvider } from &#x27;core/common/providers/hashing.provider&#x27;;
-import {
-  EntitySubscriberInterface,
-  EventSubscriber,
-  InsertEvent,
-  UpdateEvent
-} from &#x27;typeorm&#x27;;
-import { User } from &#x27;users/entities/user.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import * as bcrypt from &#x27;bcrypt&#x27;;
+import { HashingProvider } from &#x27;./hashing.provider&#x27;;
 
 /**
- * Decorator that marks the class as a subscriber for entity events
+ * BcryptService is a class responsible for hashing and comparing passwords using the bcrypt algorithm.
+ * The Injectable decorator allows NestJS to manage the lifecycle of the service.
  */
-@EventSubscriber()
-export class UsersSubscriber implements EntitySubscriberInterface&lt;User&gt; {
+@Injectable()
+export class BcryptProvider implements HashingProvider {
   /**
-   * Constructor to initialize the hashing provider
-   * @param hashingProvider
+   * Method to hash a given data (string or Buffer) with a specified number of salt rounds (default is 10).
+   * @param data
+   * @param roundsSalt
+   * @returns stringHash
    */
-  constructor(
-    // Injecting HashingProvider for password hashing
-    private readonly hashingProvider: HashingProvider
-  ) {}
+  async hash(data: string | Buffer, roundsSalt: number &#x3D; 10) {
+    // Generate a salt with the specified number of rounds.
+    const getSalt &#x3D; await bcrypt.genSalt(roundsSalt);
 
-  /**
-   * This method specifies the entity that this subscriber listens to
-   * @returns User entity
-   */
-  listenTo() {
-    // Listen to User entity events
-    return User;
+    // Return the hashed data using the generated salt.
+    return bcrypt.hash(data, getSalt);
   }
 
   /**
-   * Method to handle actions before a user entity is inserted into the database
-   * @param event
+   * Method to compare a plain text data with an encrypted hash.
+   * Returns a boolean indicating whether the data matches the encrypted hash.
+   * @param data
+   * @param encrypted
+   * @returns boolean
    */
-  async beforeInsert(event: InsertEvent&lt;User&gt;) {
-    // Destructure user entity from the event
-    const { entity: user } &#x3D; event;
-
-    // Hash the user&#x27;s password before inserting it into the database
-    if (user.password) {
-      user.password &#x3D; await this.hashingProvider.hash(user.password);
-    }
-  }
-
-  /**
-   * Method to handle actions before a user entity is updated in the database
-   * @param event
-   */
-  async beforeUpdate(event: UpdateEvent&lt;User&gt;) {
-    // Destructure the entity from the event
-    const { entity, databaseEntity } &#x3D; event;
-
-    if (entity.password) {
-      // Check if the new plain text password differs from the existing hashed password
-      const passwordMatches &#x3D; await this.hashingProvider.compare(
-        entity.password,
-        databaseEntity.password
-      );
-
-      if (!passwordMatches)
-        // Hash the new password before updating it in the database
-        entity.password &#x3D; await this.hashingProvider.hash(entity.password);
-    }
+  compare(data: string | Buffer, encrypted: string) {
+    return bcrypt.compare(data, encrypted);
   }
 }
 </code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -533,8 +425,8 @@ export class UsersSubscriber implements EntitySubscriberInterface&lt;User&gt; {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UsersSubscriber.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'BcryptProvider.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

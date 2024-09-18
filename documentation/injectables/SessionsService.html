@@ -152,7 +152,7 @@ validating, and retrieving user sessions.</p>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#sessions" >sessions</a>
+                                <a href="#getSessions" >getSessions</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -176,12 +176,12 @@ validating, and retrieving user sessions.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dataSource: DataSource, sessionRepository: <a href="../entitys/Session.html" target="_self">Repository&lt;Session&gt;</a>, userRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>)</code>
+<code>constructor(sessionRepository: <a href="../entitys/Session.html" target="_self">Repository&lt;Session&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/sessions/sessions.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/sessions/sessions.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -195,26 +195,9 @@ validating, and retrieving user sessions.</p>
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
-                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>dataSource</td>
-                                                  
-                                                        <td>
-                                                                    <code>DataSource</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>DataSource instance for accessing the database</p>
-
-                                                        </td>
-                                                </tr>
                                                 <tr>
                                                         <td>sessionRepository</td>
                                                   
@@ -226,26 +209,6 @@ validating, and retrieving user sessions.</p>
                                                             No
                                                     </td>
                                                     
-                                                        <td>
-                                                                <p>The Session repository for CRUD operations on Session entities</p>
-
-                                                        </td>
-                                                </tr>
-                                                <tr>
-                                                        <td>userRepository</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../entitys/User.html" target="_self" >Repository&lt;User&gt;</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>The User repository to access User entities</p>
-
-                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -283,8 +246,8 @@ validating, and retrieving user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/sessions/sessions.service.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/sessions/sessions.service.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -303,6 +266,7 @@ validating, and retrieving user sessions.</p>
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -317,6 +281,12 @@ validating, and retrieving user sessions.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The ID of the user</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>token</td>
@@ -329,6 +299,12 @@ validating, and retrieving user sessions.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The session token</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>ip</td>
@@ -341,6 +317,12 @@ validating, and retrieving user sessions.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The IP address of the user</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>device</td>
@@ -353,16 +335,22 @@ validating, and retrieving user sessions.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Information about the user&#39;s device</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../entitys/Session.html" target="_self" >Promise&lt;Session&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>New session</p>
+                                <p>The newly created session</p>
 
                             </div>
                 </td>
@@ -373,33 +361,33 @@ validating, and retrieving user sessions.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="sessions"></a>
+                    <a name="getSessions"></a>
                     <span class="name">
                             <span class="modifier">Async</span>
-                        <span ><b>sessions</b></span>
-                        <a href="#sessions"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getSessions</b></span>
+                        <a href="#getSessions"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>sessions(undefined: <a href="../interfaces/CustomUser.html" target="_self">CustomUser</a>)</code>
+                    <code>getSessions(customUser: <a href="../interfaces/CustomUser.html" target="_self">CustomUser</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="88"
-                                    class="link-to-prism">src/sessions/sessions.service.ts:88</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/sessions/sessions.service.ts:70</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Retrieves sessions for a given user****</p>
+                        <div class="io-description"><p>Retrieves all sessions for a given user.</p>
 </div>
 
                             <div class="io-description">
@@ -415,6 +403,7 @@ validating, and retrieving user sessions.</p>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                                <td>customUser</td>
                                             <td>
                                                             <code><a href="../interfaces/CustomUser.html" target="_self" >CustomUser</a></code>
                                             </td>
@@ -429,11 +418,11 @@ validating, and retrieving user sessions.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>        <code><a href="../entitys/Session.html" target="_self" >Promise&lt;Session[]&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>Session lists</p>
+                                <p>A list of sessions for the user</p>
 
                             </div>
                 </td>
@@ -462,8 +451,8 @@ validating, and retrieving user sessions.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/sessions/sessions.service.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/sessions/sessions.service.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -482,6 +471,7 @@ validating, and retrieving user sessions.</p>
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -496,6 +486,12 @@ validating, and retrieving user sessions.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The ID of the user</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>token</td>
@@ -508,16 +504,22 @@ validating, and retrieving user sessions.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The session token</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../entitys/Session.html" target="_self" >Promise&lt;Session&gt;</a></code>
+                            <b>Returns : </b>        <code><a href="../entitys/Session.html" target="_self" >Promise&lt;Session | null&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>Object of session</p>
+                                <p>The session if valid, or null if not found or expired</p>
 
                             </div>
                 </td>
@@ -535,8 +537,7 @@ import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { CustomUser } from &#x27;core/common/interfaces/custom-request.interface&#x27;;
 import { Device } from &#x27;core/common/interfaces/device.interface&#x27;;
 import { Session } from &#x27;sessions/entities/session.entity&#x27;;
-import { DataSource, Raw, Repository } from &#x27;typeorm&#x27;;
-import { User } from &#x27;users/entities/user.entity&#x27;;
+import { MoreThan, Repository } from &#x27;typeorm&#x27;;
 
 /**
  * The SessionService class is marked as Injectable,
@@ -546,86 +547,68 @@ import { User } from &#x27;users/entities/user.entity&#x27;;
  */
 @Injectable()
 export class SessionsService {
-  /**
-   * @param dataSource DataSource instance for accessing the database
-   * @param sessionRepository The Session repository for CRUD operations on Session entities
-   * @param userRepository The User repository to access User entities
-   */
   constructor(
-    private readonly dataSource: DataSource,
     @InjectRepository(Session)
-    private readonly sessionRepository: Repository&lt;Session&gt;,
-    @InjectRepository(User)
-    private readonly userRepository: Repository&lt;User&gt;
+    private readonly sessionRepository: Repository&lt;Session&gt;
   ) {}
 
   /**
    * Creates a new session for a specified user
-   * @param userId
-   * @param token
-   * @param ip
-   * @param device
-   * @returns New session
+   * @param userId - The ID of the user
+   * @param token - The session token
+   * @param ip - The IP address of the user
+   * @param device - Information about the user&#x27;s device
+   * @returns The newly created session
    */
-  async create(userId: string, token: string, ip: string, device: Device) {
-    /**
-     * Creates a new session instance with the provided user ID, token, IP address, device information,
-     * and sets the expiry date to 31 days from now
-     */
+  async create(
+    userId: string,
+    token: string,
+    ip: string,
+    device: Device
+  ): Promise&lt;Session&gt; {
+    // Create a new session instance with an expiry date set to 31 days from now
     const session &#x3D; this.sessionRepository.create({
-      owner: {
-        id: userId
-      },
+      owner: { id: userId },
       ip,
       token,
       device,
-      expiryDate: new Date(new Date().setMilliseconds(31 * 24 * 60 * 60 * 1000))
+      expiryDate: new Date(Date.now() + 31 * 24 * 60 * 60 * 1000) // 31 days from now
     });
 
-    // Saves the newly created session to the database and returns it.
-    return await this.sessionRepository.save(session);
+    // Save the newly created session to the database and return it
+    return this.sessionRepository.save(session);
   }
 
   /**
    * Validates a session based on the user ID and token.
-   * @param userId
-   * @param token
-   * @returns Object of session
+   * @param userId - The ID of the user
+   * @param token - The session token
+   * @returns The session if valid, or null if not found or expired
    */
-  async validate(userId: string, token: string): Promise&lt;Session&gt; {
-    /**
-     * Finds a session that matches the user ID and token,
-     * and checks if the session has not expired by comparing the expiry date with the current date.
-     */
-    const session &#x3D; await this.dataSource.getRepository(Session).findOne({
+  async validate(userId: string, token: string): Promise&lt;Session | null&gt; {
+    // Find a session matching the user ID and token, ensuring it has not expired
+    return this.sessionRepository.findOne({
       where: {
         token,
-        owner: {
-          id: userId
-        },
-        // Ensures the expiry date is in the future.
-        expiryDate: Raw((alias) &#x3D;&gt; &#x60;${alias} &gt; NOW()&#x60;)
+        owner: { id: userId },
+        expiryDate: MoreThan(new Date()) // Ensure the expiry date is in the future
       }
     });
-
-    // Returns the found session or null if not found or expired.
-    return session;
   }
 
   /**
-   * Retrieves sessions for a given user****
-   * @param param0
-   * @returns Session lists
+   * Retrieves all sessions for a given user.
+   * @param user - The user whose sessions are to be retrieved
+   * @returns A list of sessions for the user
    */
-  async sessions({ id }: CustomUser) {
-    /**
-     * Fetches a user by ID along with their related sessions
-     */
-    await this.userRepository.findOne({
-      where: { id },
-      // Specifies that related sessions should be fetched.
-      relations: [&#x27;session&#x27;]
+  async getSessions(customUser: CustomUser): Promise&lt;Session[]&gt; {
+    const sessions &#x3D; await this.sessionRepository.find({
+      where: {
+        owner: customUser.data
+      }
     });
+
+    return sessions;
   }
 }
 </code></pre>
