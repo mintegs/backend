@@ -4,7 +4,6 @@ import { CustomUser } from 'core/common/interfaces/custom-request.interface';
 import { Device } from 'core/common/interfaces/device.interface';
 import { Session } from 'sessions/entities/session.entity';
 import { MoreThan, Repository } from 'typeorm';
-import { User } from 'users/entities/user.entity';
 
 /**
  * The SessionService class is marked as Injectable,
@@ -16,9 +15,7 @@ import { User } from 'users/entities/user.entity';
 export class SessionsService {
   constructor(
     @InjectRepository(Session)
-    private readonly sessionRepository: Repository<Session>,
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>
+    private readonly sessionRepository: Repository<Session>
   ) {}
 
   /**
@@ -70,14 +67,13 @@ export class SessionsService {
    * @param user - The user whose sessions are to be retrieved
    * @returns A list of sessions for the user
    */
-  async getSessions({ id }: CustomUser): Promise<Session[]> {
-    // Fetch the user by ID and include their related sessions
-    const user = await this.userRepository.findOne({
-      where: { id },
-      relations: ['sessions'] // Fetch related sessions
+  async getSessions(customUser: CustomUser): Promise<Session[]> {
+    const sessions = await this.sessionRepository.find({
+      where: {
+        owner: customUser.data
+      }
     });
 
-    // Return the user's sessions or an empty array if no sessions are found
-    return user?.sessions ?? [];
+    return sessions;
   }
 }

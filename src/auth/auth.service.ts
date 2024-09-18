@@ -1,4 +1,6 @@
 import {
+  forwardRef,
+  Inject,
   Injectable,
   NotFoundException,
   UnauthorizedException
@@ -7,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { SessionsService } from 'sessions/sessions.service';
 import { User } from 'users/entities/user.entity';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { HashingService } from '../core/common/hashing/hashing.service';
+import { HashingProvider } from '../core/common/providers/hashing.provider';
 import { Device } from 'core/common/interfaces/device.interface';
 import { JwtPayload } from 'core/common/interfaces/jwt-payload.interface';
 import { CustomUser } from 'core/common/interfaces/custom-request.interface';
@@ -30,10 +32,12 @@ export class AuthService {
    * @param jwtService JwtService for generating JWT tokens
    */
   constructor(
+    @Inject(forwardRef(() => UsersService))
     private readonly userService: UsersService,
-    // Injecting the HashingService for password hashing
-    private readonly hashingService: HashingService,
+    @Inject(forwardRef(() => HashingProvider))
+    private readonly hashingProvider: HashingProvider,
     // Injecting the SessionService for managing user sessions
+    @Inject(forwardRef(() => SessionsService))
     private readonly sessionService: SessionsService,
     // Injecting the JwtService for generating JWT tokens
     private readonly jwtService: JwtService
@@ -134,7 +138,7 @@ export class AuthService {
     //   );
 
     // Compares the provided password with the stored password hash
-    const isMatch = await this.hashingService.compare(password, user.password);
+    const isMatch = await this.hashingProvider.compare(password, user.password);
 
     // Throws an UnauthorizedException if the password is invalid
     if (!isMatch) throw new UnauthorizedException('invalid password');
@@ -166,7 +170,7 @@ export class AuthService {
     if (!session) throw new UnauthorizedException();
 
     // Creates a CustomUser object containing the user's ID and the session information
-    const res: CustomUser = { id, session };
+    const res: CustomUser = { data: user, session };
 
     // Returns the CustomUser object
     return res;

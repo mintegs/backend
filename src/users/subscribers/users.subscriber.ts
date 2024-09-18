@@ -1,4 +1,4 @@
-import { HashingService } from 'core/common/hashing/hashing.service';
+import { HashingProvider } from 'core/common/providers/hashing.provider';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -13,12 +13,12 @@ import { User } from 'users/entities/user.entity';
 @EventSubscriber()
 export class UsersSubscriber implements EntitySubscriberInterface<User> {
   /**
-   * Constructor to initialize the hashing service
-   * @param hashingService
+   * Constructor to initialize the hashing provider
+   * @param hashingProvider
    */
   constructor(
-    // Injecting HashingService for password hashing
-    private readonly hashingService: HashingService
+    // Injecting HashingProvider for password hashing
+    private readonly hashingProvider: HashingProvider
   ) {}
 
   /**
@@ -40,7 +40,7 @@ export class UsersSubscriber implements EntitySubscriberInterface<User> {
 
     // Hash the user's password before inserting it into the database
     if (user.password) {
-      user.password = await this.hashingService.hash(user.password);
+      user.password = await this.hashingProvider.hash(user.password);
     }
   }
 
@@ -54,14 +54,14 @@ export class UsersSubscriber implements EntitySubscriberInterface<User> {
 
     if (entity.password) {
       // Check if the new plain text password differs from the existing hashed password
-      const passwordMatches = await this.hashingService.compare(
+      const passwordMatches = await this.hashingProvider.compare(
         entity.password,
         databaseEntity.password
       );
 
       if (!passwordMatches)
         // Hash the new password before updating it in the database
-        entity.password = await this.hashingService.hash(entity.password);
+        entity.password = await this.hashingProvider.hash(entity.password);
     }
   }
 }

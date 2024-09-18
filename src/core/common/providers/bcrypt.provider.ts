@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { HashingService } from './hashing.service';
+import { HashingProvider } from './hashing.provider';
 
 /**
- * BcryptService is a class responsible for hashing and comparing passwords using the bcrypt algorithm.
+ * BcryptProvider is a class responsible for hashing and comparing passwords using the bcrypt algorithm.
  * The Injectable decorator allows NestJS to manage the lifecycle of the service.
  */
 @Injectable()
-export class BcryptService implements HashingService {
+export class BcryptProvider implements HashingProvider {
   /**
    * Method to hash a given data (string or Buffer) with a specified number of salt rounds (default is 10).
    * @param data

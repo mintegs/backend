@@ -1,22 +1,15 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { PaginationQueryDto } from './dto/pagination-query.dto';
+import { Injectable } from '@nestjs/common';
+import { PaginationQueryDto } from '../dto/pagination-query.dto';
 import {
   Repository,
   ObjectLiteral,
   FindOptionsWhere,
   FindOptionsRelations
 } from 'typeorm';
-import { Request } from 'express';
-import { REQUEST } from '@nestjs/core';
-import { Paginated } from './interfaces/paginated.interface';
+import { Paginated } from '../interfaces/paginated.interface';
 
 @Injectable()
-export class PaginationService {
-  constructor(
-    @Inject(REQUEST)
-    private readonly request: Request // Injecting request to access request-related information
-  ) {}
-
+export class PaginationProvider {
   /**
    * A lightweight and faster method to paginate query results.
    * Optimized for minimal response overhead.

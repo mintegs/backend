@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 
 /**
- * The HashingService class is defined as an abstract service in NestJS.
+ * The HashingProvider class is defined as an abstract service in NestJS.
  * It provides an interface for hashing and comparing hashed data,
  * which can be implemented by any concrete class that requires
  * cryptographic hashing functionality.
  */
 @Injectable()
-export abstract class HashingService {
+export abstract class HashingProvider {
   /**
    * The hash method is an abstract method that takes data as a string or Buffer
    * @param data

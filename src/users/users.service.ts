@@ -4,17 +4,12 @@ import {
   UnauthorizedException
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  FindOptionsSelect,
-  FindOptionsSelectByString,
-  FindOptionsWhere,
-  Repository
-} from 'typeorm';
+import { FindOptionsRelations, FindOptionsWhere, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { UserChangePasswordDto } from '../core/common/dto/user-change-password.dto';
-import { HashingService } from 'core/common/hashing/hashing.service';
+import { HashingProvider } from 'core/common/providers/hashing.provider';
 
 /**
  * Class to connect to Users table and preform business operations
@@ -30,13 +25,12 @@ export class UsersService {
    * updating, or deleting User entities.
    * @param userRepository - An instance of the Repository<User> that provides
    * access to user-related database operations.
-   * @param hashingService HashingService for password hashing and compare password
+   * @param hashingProvider hashingProvider for password hashing and compare password
    */
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    // Injecting the HashingService for password hashing
-    private readonly hashingService: HashingService
+    private readonly hashingProvider: HashingProvider
   ) {}
 
   /**
@@ -68,7 +62,7 @@ export class UsersService {
    */
   async findOne(
     where: FindOptionsWhere<User> | FindOptionsWhere<User>[],
-    select: FindOptionsSelect<User> | FindOptionsSelectByString<User> = [
+    select: (keyof User)[] = [
       'id',
       'email',
       'name',
@@ -80,7 +74,10 @@ export class UsersService {
     ]
   ) {
     // Find user
-    const user = await this.userRepository.findOne({ where, select });
+    const user = await this.userRepository.findOne({
+      where,
+      select
+    });
 
     // If doesn't exists, throw error
     if (!user) throw new NotFoundException('user not found');
@@ -92,9 +89,12 @@ export class UsersService {
   /**
    * Find a single user using the ID of the user
    */
-  async findOneById(id: string) {
+  async findOneById(id: string, relations?: FindOptionsRelations<User>) {
     // Find user with id
-    const user = await this.userRepository.findOneBy({ id });
+    const user = await this.userRepository.findOne({
+      where: { id },
+      relations
+    });
 
     // If doesn't exists, throw error
     if (!user) throw new NotFoundException('user not found');
@@ -142,9 +142,9 @@ export class UsersService {
     });
 
     /**
-     * Compares the provided current password with the stored password hash using the HashingService
+     * Compares the provided current password with the stored password hash using the hashingProvider
      */
-    const isMatch = await this.hashingService.compare(
+    const isMatch = await this.hashingProvider.compare(
       currentPassword,
       user.password
     );

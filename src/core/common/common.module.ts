@@ -1,9 +1,8 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 import { VALIDATION_PIPE_OPTIONS } from './util/common.constants';
-import { HashingService } from './hashing/hashing.service';
-import { BcryptService } from './hashing/bcrypt.service';
-import { PaginationModule } from './pagination/pagination.module';
+import { HashingProvider } from './providers/hashing.provider';
+import { BcryptProvider } from './providers/bcrypt.provider';
 
 /**
  * Define a module called CommonModule
@@ -13,9 +12,9 @@ import { PaginationModule } from './pagination/pagination.module';
 @Module({
   providers: [
     {
-      // Use BcryptService as the implementation of HashingService
-      provide: HashingService,
-      useClass: BcryptService
+      // Use BcryptProvider as the implementation of HashingProvider
+      provide: HashingProvider,
+      useClass: BcryptProvider
     },
     {
       provide: APP_PIPE,
@@ -23,7 +22,6 @@ import { PaginationModule } from './pagination/pagination.module';
     }
   ],
   // Export the HashingService for use in other modules
-  exports: [HashingService],
-  imports: [PaginationModule]
+  exports: [HashingProvider]
 })
 export class CommonModule {}

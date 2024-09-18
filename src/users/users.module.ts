@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Session } from 'sessions/entities/session.entity';
 import { User } from './entities/user.entity';
 import { UsersSubscriber } from './subscribers/users.subscriber';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { CommonModule } from 'core/common/common.module';
+import { SessionsModule } from 'sessions/sessions.module';
 
 /**
  * UsersModule is responsible for managing user-related functionalities within the application.
@@ -22,8 +22,13 @@ import { CommonModule } from 'core/common/common.module';
  * Overall, this module encapsulates all functionalities related to user management, ensuring a clean separation of concerns in the application architecture.
  */
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Session]), CommonModule],
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    forwardRef(() => CommonModule),
+    forwardRef(() => SessionsModule)
+  ],
   controllers: [UsersController],
-  providers: [UsersService, UsersSubscriber]
+  providers: [UsersService, UsersSubscriber],
+  exports: [UsersService]
 })
 export class UsersModule {}
